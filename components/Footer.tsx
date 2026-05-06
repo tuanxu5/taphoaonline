@@ -44,12 +44,12 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-bold text-gray-900 mb-4">Danh mục sản phẩm</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/?category=phone" className="text-gray-600 hover:text-[#d70018] transition-colors">Điện thoại</Link></li>
-              <li><Link href="/?category=laptop" className="text-gray-600 hover:text-[#d70018] transition-colors">Laptop</Link></li>
-              <li><Link href="/?category=cosmetics" className="text-gray-600 hover:text-[#d70018] transition-colors">Mỹ phẩm</Link></li>
-              <li><Link href="/?category=shoes" className="text-gray-600 hover:text-[#d70018] transition-colors">Giày dép</Link></li>
-              <li><Link href="/?category=fashion" className="text-gray-600 hover:text-[#d70018] transition-colors">Quần áo</Link></li>
-              <li><Link href="/?category=accessories" className="text-gray-600 hover:text-[#d70018] transition-colors">Phụ kiện</Link></li>
+              <li><Link href="/danh-muc/dien-thoai" className="text-gray-600 hover:text-[#d70018] transition-colors">Điện thoại</Link></li>
+              <li><Link href="/danh-muc/laptop" className="text-gray-600 hover:text-[#d70018] transition-colors">Laptop</Link></li>
+              <li><Link href="/danh-muc/my-pham" className="text-gray-600 hover:text-[#d70018] transition-colors">Mỹ phẩm</Link></li>
+              <li><Link href="/danh-muc/giay-dep" className="text-gray-600 hover:text-[#d70018] transition-colors">Giày dép</Link></li>
+              <li><Link href="/danh-muc/quan-ao" className="text-gray-600 hover:text-[#d70018] transition-colors">Quần áo</Link></li>
+              <li><Link href="/danh-muc/phu-kien" className="text-gray-600 hover:text-[#d70018] transition-colors">Phụ kiện</Link></li>
             </ul>
           </div>
 

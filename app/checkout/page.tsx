@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ShoppingBag, CheckCircle, Loader2, User, MapPin, CreditCard, FileText, Truck, Shield, RotateCcw } from 'lucide-react';
 
+export const runtime = 'edge';
+
 export default function CheckoutPage() {
   const { cart, getTotalPrice, clearCart } = useCart();
   const router = useRouter();

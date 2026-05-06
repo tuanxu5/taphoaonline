@@ -1,54 +1,22 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useState, Suspense } from 'react';
 import ProductCard from '@/components/ProductCard';
-import Banner from '@/components/Banner';
-import CategoryFilter from '@/components/CategoryFilter';
 import Features from '@/components/Features';
-import HotDeals from '@/components/HotDeals';
 import FilterBar from '@/components/FilterBar';
-import { products, categories } from '@/lib/products';
-import { LayoutGrid, List } from 'lucide-react';
+import { products } from '@/lib/products';
+import { LayoutGrid, List, ArrowLeft, Flame } from 'lucide-react';
+import Link from 'next/link';
 
 export const runtime = 'edge';
 
-function HomeContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const categoryParam = searchParams.get('category');
-  const flashsaleParam = searchParams.get('flashsale');
-  
-  const [selectedCategory, setSelectedCategory] = useState(categoryParam || 'all');
+function FlashSaleContent() {
   const [priceRange, setPriceRange] = useState('all');
   const [sortBy, setSortBy] = useState('default');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  // Update selected category when URL changes
-  useEffect(() => {
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
-    } else if (!flashsaleParam) {
-      setSelectedCategory('all');
-    }
-  }, [categoryParam, flashsaleParam]);
-
-  // Handle category selection
-  const handleCategorySelect = (categoryId: string) => {
-    setSelectedCategory(categoryId);
-    if (categoryId === 'all') {
-      router.push('/');
-    } else {
-      router.push(`/?category=${categoryId}`);
-    }
-  };
-
-  // Filter products based on flashsale or category
-  let filteredProducts = flashsaleParam === 'true'
-    ? products.filter(p => p.isHot)
-    : selectedCategory === 'all'
-    ? products
-    : products.filter(p => p.category === selectedCategory);
+  // Filter hot products
+  let filteredProducts = products.filter(p => p.isHot);
 
   // Filter by price
   if (priceRange !== 'all') {
@@ -72,27 +40,30 @@ function HomeContent() {
     filteredProducts = [...filteredProducts].sort((a, b) => b.rating - a.rating);
   }
 
-  // Get page title
-  const getPageTitle = () => {
-    if (flashsaleParam === 'true') return 'Flash Sale';
-    if (selectedCategory === 'all') return 'Tất cả sản phẩm';
-    return categories.find(c => c.id === selectedCategory)?.name || 'Sản phẩm';
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
-      {!flashsaleParam && <Banner />}
-      {!flashsaleParam && <HotDeals />}
+      {/* Breadcrumb */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-4 py-3">
+          <div className="flex items-center gap-2 text-sm">
+            <Link href="/" className="text-gray-600 hover:text-[#d70018]">
+              Trang chủ
+            </Link>
+            <span className="text-gray-400">/</span>
+            <span className="text-[#d70018] font-medium">Flash Sale</span>
+          </div>
+        </div>
+      </div>
 
       <div className="max-w-[1200px] mx-auto px-4 py-6 space-y-3">
-        {/* Category Filter - only show if not flashsale */}
-        {!flashsaleParam && (
-          <CategoryFilter
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onSelectCategory={handleCategorySelect}
-          />
-        )}
+        {/* Back button - Mobile */}
+        <Link 
+          href="/"
+          className="lg:hidden flex items-center gap-2 text-gray-600 hover:text-[#d70018] mb-4"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span className="text-sm">Quay lại</span>
+        </Link>
 
         {/* Filter Bar */}
         <div className="flex items-center justify-between gap-4">
@@ -131,14 +102,19 @@ function HomeContent() {
         {/* Products Section */}
         <div>
           {/* Header */}
-          <div className="flex items-center justify-between mb-3 bg-white rounded-lg border border-gray-200 p-3">
-            <div>
-              <h2 className="text-lg font-bold text-gray-900">
-                {getPageTitle()}
-              </h2>
-              <p className="text-xs text-gray-500 mt-0.5">
-                {filteredProducts.length} sản phẩm
-              </p>
+          <div className="flex items-center justify-between mb-3 bg-gradient-to-r from-[#d70018] to-[#ff4444] rounded-lg p-4">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                <Flame className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-white">
+                  FLASH SALE
+                </h1>
+                <p className="text-sm text-white/90 mt-0.5">
+                  {filteredProducts.length} sản phẩm đang giảm giá
+                </p>
+              </div>
             </div>
           </div>
 
@@ -157,13 +133,13 @@ function HomeContent() {
           {filteredProducts.length === 0 && (
             <div className="text-center py-20 bg-white rounded-xl">
               <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <LayoutGrid className="w-12 h-12 text-gray-400" />
+                <Flame className="w-12 h-12 text-gray-400" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Không tìm thấy sản phẩm
+                Không có sản phẩm Flash Sale
               </h3>
               <p className="text-gray-600">
-                Thử thay đổi bộ lọc hoặc tìm kiếm khác
+                Vui lòng quay lại sau
               </p>
             </div>
           )}
@@ -175,7 +151,7 @@ function HomeContent() {
   );
 }
 
-export default function Home() {
+export default function FlashSalePage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -185,7 +161,7 @@ export default function Home() {
         </div>
       </div>
     }>
-      <HomeContent />
+      <FlashSaleContent />
     </Suspense>
   );
 }

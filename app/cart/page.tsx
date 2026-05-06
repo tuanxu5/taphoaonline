@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, ChevronLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
+export const runtime = 'edge';
+
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, getTotalPrice } = useCart();
   const router = useRouter();

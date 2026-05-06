@@ -11,21 +11,21 @@ const banners = [
     image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&h=400&fit=crop',
     title: 'iPhone 15 Series',
     subtitle: 'Giảm đến 5 triệu',
-    link: '/?category=phone'
+    link: '/danh-muc/dien-thoai'
   },
   {
     id: 2,
     image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&h=400&fit=crop',
     title: 'Laptop Gaming',
     subtitle: 'Trả góp 0%',
-    link: '/?category=laptop'
+    link: '/danh-muc/laptop'
   },
   {
     id: 3,
     image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=400&fit=crop',
     title: 'Mỹ Phẩm Chính Hãng',
     subtitle: 'Sale đến 50%',
-    link: '/?category=cosmetics'
+    link: '/danh-muc/my-pham'
   }
 ];
 
@@ -61,10 +61,18 @@ export default function Banner() {
             <div className="space-y-0.5">
               {categories.filter(c => c.id !== 'all').map((category) => {
                 const Icon = categoryIcons[category.id] || Smartphone;
+                const slugMap: Record<string, string> = {
+                  'phone': 'dien-thoai',
+                  'laptop': 'laptop',
+                  'cosmetics': 'my-pham',
+                  'shoes': 'giay-dep',
+                  'fashion': 'quan-ao',
+                  'accessories': 'phu-kien'
+                };
                 return (
                   <Link
                     key={category.id}
-                    href={`/?category=${category.id}`}
+                    href={`/danh-muc/${slugMap[category.id]}`}
                     className="flex items-center gap-2 px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#d70018] rounded transition-colors"
                   >
                     <Icon className="w-4 h-4" />
@@ -142,7 +150,7 @@ export default function Banner() {
           <div className="lg:col-span-3 space-y-2">
             {/* Promotion 1 */}
             <Link
-              href="/?category=phone"
+              href="/danh-muc/dien-thoai"
               className="block bg-white rounded-lg p-3 hover:shadow-md transition-all border border-gray-200"
             >
               <div className="flex items-center gap-3">
@@ -158,7 +166,7 @@ export default function Banner() {
 
             {/* Promotion 2 */}
             <Link
-              href="/?category=laptop"
+              href="/danh-muc/laptop"
               className="block bg-white rounded-lg p-3 hover:shadow-md transition-all border border-gray-200"
             >
               <div className="flex items-center gap-3">
@@ -174,7 +182,7 @@ export default function Banner() {
 
             {/* Promotion 3 */}
             <Link
-              href="/?category=cosmetics"
+              href="/danh-muc/my-pham"
               className="block bg-white rounded-lg p-3 hover:shadow-md transition-all border border-gray-200"
             >
               <div className="flex items-center gap-3">
@@ -190,7 +198,7 @@ export default function Banner() {
 
             {/* Promotion 4 */}
             <Link
-              href="/?category=accessories"
+              href="/danh-muc/phu-kien"
               className="block bg-white rounded-lg p-3 hover:shadow-md transition-all border border-gray-200"
             >
               <div className="flex items-center gap-3">

@@ -1,54 +1,40 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useState, Suspense } from 'react';
+import { useParams } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
-import Banner from '@/components/Banner';
-import CategoryFilter from '@/components/CategoryFilter';
 import Features from '@/components/Features';
-import HotDeals from '@/components/HotDeals';
 import FilterBar from '@/components/FilterBar';
 import { products, categories } from '@/lib/products';
-import { LayoutGrid, List } from 'lucide-react';
+import { LayoutGrid, List, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 export const runtime = 'edge';
 
-function HomeContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const categoryParam = searchParams.get('category');
-  const flashsaleParam = searchParams.get('flashsale');
+// Mapping slug to category ID
+const slugToCategory: Record<string, string> = {
+  'dien-thoai': 'phone',
+  'laptop': 'laptop',
+  'my-pham': 'cosmetics',
+  'giay-dep': 'shoes',
+  'quan-ao': 'fashion',
+  'phu-kien': 'accessories',
+};
+
+function CategoryContent() {
+  const params = useParams();
+  const slug = params.slug as string;
+  const categoryId = slugToCategory[slug];
   
-  const [selectedCategory, setSelectedCategory] = useState(categoryParam || 'all');
   const [priceRange, setPriceRange] = useState('all');
   const [sortBy, setSortBy] = useState('default');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  // Update selected category when URL changes
-  useEffect(() => {
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
-    } else if (!flashsaleParam) {
-      setSelectedCategory('all');
-    }
-  }, [categoryParam, flashsaleParam]);
-
-  // Handle category selection
-  const handleCategorySelect = (categoryId: string) => {
-    setSelectedCategory(categoryId);
-    if (categoryId === 'all') {
-      router.push('/');
-    } else {
-      router.push(`/?category=${categoryId}`);
-    }
-  };
-
-  // Filter products based on flashsale or category
-  let filteredProducts = flashsaleParam === 'true'
-    ? products.filter(p => p.isHot)
-    : selectedCategory === 'all'
-    ? products
-    : products.filter(p => p.category === selectedCategory);
+  // Get category info
+  const category = categories.find(c => c.id === categoryId);
+  
+  // Filter products by category
+  let filteredProducts = products.filter(p => p.category === categoryId);
 
   // Filter by price
   if (priceRange !== 'all') {
@@ -72,27 +58,43 @@ function HomeContent() {
     filteredProducts = [...filteredProducts].sort((a, b) => b.rating - a.rating);
   }
 
-  // Get page title
-  const getPageTitle = () => {
-    if (flashsaleParam === 'true') return 'Flash Sale';
-    if (selectedCategory === 'all') return 'Tất cả sản phẩm';
-    return categories.find(c => c.id === selectedCategory)?.name || 'Sản phẩm';
-  };
+  if (!category) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Không tìm thấy danh mục</h1>
+          <Link href="/" className="text-[#d70018] hover:underline">
+            Về trang chủ
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {!flashsaleParam && <Banner />}
-      {!flashsaleParam && <HotDeals />}
+      {/* Breadcrumb */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-[1200px] mx-auto px-4 py-3">
+          <div className="flex items-center gap-2 text-sm">
+            <Link href="/" className="text-gray-600 hover:text-[#d70018]">
+              Trang chủ
+            </Link>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-900 font-medium">{category.name}</span>
+          </div>
+        </div>
+      </div>
 
       <div className="max-w-[1200px] mx-auto px-4 py-6 space-y-3">
-        {/* Category Filter - only show if not flashsale */}
-        {!flashsaleParam && (
-          <CategoryFilter
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onSelectCategory={handleCategorySelect}
-          />
-        )}
+        {/* Back button - Mobile */}
+        <Link 
+          href="/"
+          className="lg:hidden flex items-center gap-2 text-gray-600 hover:text-[#d70018] mb-4"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span className="text-sm">Quay lại</span>
+        </Link>
 
         {/* Filter Bar */}
         <div className="flex items-center justify-between gap-4">
@@ -131,12 +133,12 @@ function HomeContent() {
         {/* Products Section */}
         <div>
           {/* Header */}
-          <div className="flex items-center justify-between mb-3 bg-white rounded-lg border border-gray-200 p-3">
+          <div className="flex items-center justify-between mb-3 bg-white rounded-lg border border-gray-200 p-4">
             <div>
-              <h2 className="text-lg font-bold text-gray-900">
-                {getPageTitle()}
-              </h2>
-              <p className="text-xs text-gray-500 mt-0.5">
+              <h1 className="text-2xl font-bold text-gray-900">
+                {category.name}
+              </h1>
+              <p className="text-sm text-gray-500 mt-1">
                 {filteredProducts.length} sản phẩm
               </p>
             </div>
@@ -175,7 +177,7 @@ function HomeContent() {
   );
 }
 
-export default function Home() {
+export default function CategoryPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -185,7 +187,7 @@ export default function Home() {
         </div>
       </div>
     }>
-      <HomeContent />
+      <CategoryContent />
     </Suspense>
   );
 }

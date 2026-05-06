@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { CheckCircle, Home, Package } from 'lucide-react';
 
+export const runtime = 'edge';
+
 export default function OrderSuccessPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center py-16">

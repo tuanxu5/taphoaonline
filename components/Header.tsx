@@ -91,18 +91,27 @@ export default function Header() {
             <Link href="/" className="text-gray-700 hover:text-[#d70018] font-semibold">
               Trang chủ
             </Link>
-            <Link href="/?flashsale=true" className="text-[#d70018] font-semibold">
+            <Link href="/flash-sale" className="text-[#d70018] font-semibold">
               Flash Sale
             </Link>
-            {categories.filter(c => c.id !== 'all').map((category) => (
-              <Link 
-                key={category.id}
-                href={`/?category=${category.id}`} 
-                className="text-gray-700 hover:text-[#d70018] font-semibold"
-              >
-                {category.name}
-              </Link>
-            ))}
+            <Link href="/danh-muc/dien-thoai" className="text-gray-700 hover:text-[#d70018] font-semibold">
+              Điện thoại
+            </Link>
+            <Link href="/danh-muc/laptop" className="text-gray-700 hover:text-[#d70018] font-semibold">
+              Laptop
+            </Link>
+            <Link href="/danh-muc/my-pham" className="text-gray-700 hover:text-[#d70018] font-semibold">
+              Mỹ phẩm
+            </Link>
+            <Link href="/danh-muc/giay-dep" className="text-gray-700 hover:text-[#d70018] font-semibold">
+              Giày dép
+            </Link>
+            <Link href="/danh-muc/quan-ao" className="text-gray-700 hover:text-[#d70018] font-semibold">
+              Quần áo
+            </Link>
+            <Link href="/danh-muc/phu-kien" className="text-gray-700 hover:text-[#d70018] font-semibold">
+              Phụ kiện
+            </Link>
           </div>
         </div>
       </div>
@@ -119,22 +128,54 @@ export default function Header() {
               Trang chủ
             </Link>
             <Link 
-              href="/?flashsale=true" 
+              href="/flash-sale" 
               className="block py-2.5 text-sm text-[#d70018] font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Flash Sale
             </Link>
-            {categories.filter(c => c.id !== 'all').map((category) => (
-              <Link 
-                key={category.id}
-                href={`/?category=${category.id}`} 
-                className="block py-2.5 text-sm text-gray-700"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {category.name}
-              </Link>
-            ))}
+            <Link 
+              href="/danh-muc/dien-thoai" 
+              className="block py-2.5 text-sm text-gray-700"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Điện thoại
+            </Link>
+            <Link 
+              href="/danh-muc/laptop" 
+              className="block py-2.5 text-sm text-gray-700"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Laptop
+            </Link>
+            <Link 
+              href="/danh-muc/my-pham" 
+              className="block py-2.5 text-sm text-gray-700"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Mỹ phẩm
+            </Link>
+            <Link 
+              href="/danh-muc/giay-dep" 
+              className="block py-2.5 text-sm text-gray-700"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Giày dép
+            </Link>
+            <Link 
+              href="/danh-muc/quan-ao" 
+              className="block py-2.5 text-sm text-gray-700"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Quần áo
+            </Link>
+            <Link 
+              href="/danh-muc/phu-kien" 
+              className="block py-2.5 text-sm text-gray-700"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Phụ kiện
+            </Link>
             <div className="border-t border-gray-200 my-2"></div>
             <Link 
               href="/cart" 
