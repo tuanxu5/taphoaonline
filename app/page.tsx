@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import Banner from '@/components/Banner';
 import CategoryFilter from '@/components/CategoryFilter';
@@ -11,14 +12,41 @@ import { products, categories } from '@/lib/products';
 import { LayoutGrid, List } from 'lucide-react';
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get('category');
+  const flashsaleParam = searchParams.get('flashsale');
+  
+  const [selectedCategory, setSelectedCategory] = useState(categoryParam || 'all');
   const [priceRange, setPriceRange] = useState('all');
   const [sortBy, setSortBy] = useState('default');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  let filteredProducts = selectedCategory === 'all'
+  // Update selected category when URL changes
+  useEffect(() => {
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    } else if (!flashsaleParam) {
+      setSelectedCategory('all');
+    }
+  }, [categoryParam, flashsaleParam]);
+
+  // Handle category selection
+  const handleCategorySelect = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    if (categoryId === 'all') {
+      router.push('/');
+    } else {
+      router.push(`/?category=${categoryId}`);
+    }
+  };
+
+  // Filter products based on flashsale or category
+  let filteredProducts = flashsaleParam === 'true'
+    ? products.filter(p => p.isHot)
+    : selectedCategory === 'all'
     ? products
-    : products.filter(p => p.brand.toLowerCase() === selectedCategory.toLowerCase());
+    : products.filter(p => p.category === selectedCategory);
 
   // Filter by price
   if (priceRange !== 'all') {
@@ -42,18 +70,27 @@ export default function Home() {
     filteredProducts = [...filteredProducts].sort((a, b) => b.rating - a.rating);
   }
 
+  // Get page title
+  const getPageTitle = () => {
+    if (flashsaleParam === 'true') return 'Flash Sale';
+    if (selectedCategory === 'all') return 'Tất cả sản phẩm';
+    return categories.find(c => c.id === selectedCategory)?.name || 'Sản phẩm';
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <Banner />
-      <HotDeals />
+      {!flashsaleParam && <Banner />}
+      {!flashsaleParam && <HotDeals />}
 
-      <div className="max-w-[1200px] mx-auto px-4 py-6 space-y-5">
-        {/* Category Filter */}
-        <CategoryFilter
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onSelectCategory={setSelectedCategory}
-        />
+      <div className="max-w-[1200px] mx-auto px-4 py-6 space-y-3">
+        {/* Category Filter - only show if not flashsale */}
+        {!flashsaleParam && (
+          <CategoryFilter
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelectCategory={handleCategorySelect}
+          />
+        )}
 
         {/* Filter Bar */}
         <div className="flex items-center justify-between gap-4">
@@ -65,26 +102,26 @@ export default function Home() {
           />
           
           {/* View Mode Toggle - Desktop only */}
-          <div className="hidden lg:flex items-center gap-2 bg-white rounded-lg p-1 border border-gray-200">
+          <div className="hidden lg:flex items-center gap-1 bg-white rounded-lg border border-gray-200 p-1">
             <button
               onClick={() => setViewMode('grid')}
-              className={`p-2 rounded transition-colors ${
+              className={`p-1.5 rounded transition-colors ${
                 viewMode === 'grid'
                   ? 'bg-[#d70018] text-white'
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              <LayoutGrid className="w-5 h-5" />
+              <LayoutGrid className="w-4 h-4" />
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`p-2 rounded transition-colors ${
+              className={`p-1.5 rounded transition-colors ${
                 viewMode === 'list'
                   ? 'bg-[#d70018] text-white'
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              <List className="w-5 h-5" />
+              <List className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -92,14 +129,12 @@ export default function Home() {
         {/* Products Section */}
         <div>
           {/* Header */}
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-3 bg-white rounded-lg border border-gray-200 p-3">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">
-                {selectedCategory === 'all' 
-                  ? 'Tất cả sản phẩm' 
-                  : `Điện thoại ${categories.find(c => c.id === selectedCategory)?.name}`}
+              <h2 className="text-lg font-bold text-gray-900">
+                {getPageTitle()}
               </h2>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-xs text-gray-500 mt-0.5">
                 {filteredProducts.length} sản phẩm
               </p>
             </div>
@@ -108,8 +143,8 @@ export default function Home() {
           {/* Products Grid */}
           <div className={`
             ${viewMode === 'grid' 
-              ? 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4' 
-              : 'flex flex-col gap-4'}
+              ? 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3' 
+              : 'flex flex-col gap-3'}
           `}>
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />

@@ -81,6 +81,8 @@ taphoaonline/
 |------|-------|
 | **[START_HERE.md](./START_HERE.md)** | 🎯 Bắt đầu nhanh (3 bước) |
 | **[HUONG_DAN_SU_DUNG.md](./HUONG_DAN_SU_DUNG.md)** | 📖 Hướng dẫn sử dụng chi tiết |
+| **[GIAI_PHAP_CRAWL_DATA.md](./GIAI_PHAP_CRAWL_DATA.md)** | 🕷️ Giải pháp crawl data (Mới) |
+| **[HUONG_DAN_CRAWL_SHOPEE.md](./HUONG_DAN_CRAWL_SHOPEE.md)** | 🕷️ Crawl từ Shopee (Nâng cao) |
 | **[GOOGLE_SHEETS_SETUP.md](./GOOGLE_SHEETS_SETUP.md)** | 📊 Kết nối Google Sheets |
 | **[README_WEBSITE.md](./README_WEBSITE.md)** | 🏗️ Tài liệu kỹ thuật |
 | **[TONG_KET.md](./TONG_KET.md)** | ✅ Tổng kết dự án |
@@ -149,6 +151,48 @@ taphoaonline/
 - **Mobile**: < 640px
 - **Tablet**: 640px - 1024px
 - **Desktop**: > 1024px
+
+---
+
+## 🕷️ Crawl Data Từ Shopee
+
+⚠️ **Cập nhật**: API Shopee đã thay đổi. Dưới đây là các giải pháp thay thế:
+
+### Giải Pháp 1: Sample Data (Nhanh Nhất - Khuyến Nghị)
+
+```bash
+# Tạo 12 sản phẩm mẫu chất lượng cao
+node scripts/create-sample-data.js
+
+# Merge vào website
+node scripts/merge-products.js
+```
+
+**Kết quả:**
+- ✅ 12 sản phẩm từ Apple, Samsung, Xiaomi, OPPO, Vivo, Google, Realme, OnePlus
+- ✅ Giá từ 7.9 triệu đến 35.9 triệu
+- ✅ Đầy đủ specs, hình ảnh, rating
+- ✅ Sẵn sàng sử dụng ngay
+
+### Giải Pháp 2: Puppeteer Crawler (Data Thật)
+
+```bash
+# Cài Puppeteer
+npm install puppeteer
+
+# Crawl từ Shopee
+node scripts/shopee-simple-crawler.js
+
+# Merge
+node scripts/merge-products.js
+```
+
+### Đọc thêm
+
+- **[GIAI_PHAP_CRAWL_DATA.md](./GIAI_PHAP_CRAWL_DATA.md)** - Hướng dẫn chi tiết tất cả giải pháp
+- **[HUONG_DAN_CRAWL_SHOPEE.md](./HUONG_DAN_CRAWL_SHOPEE.md)** - Hướng dẫn crawl nâng cao
+
+⚠️ **Lưu ý**: Crawling chỉ dùng cho học tập/nghiên cứu. Tôn trọng Terms of Service.
 
 ---
 

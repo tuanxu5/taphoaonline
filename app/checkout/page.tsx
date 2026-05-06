@@ -348,72 +348,76 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">
-                Đơn Hàng
+            <div className="bg-white rounded-lg border border-gray-200 p-6 sticky top-24">
+              <h2 className="text-lg font-bold text-gray-900 mb-4 pb-4 border-b">
+                Đơn hàng ({cart.length} sản phẩm)
               </h2>
 
-              <div className="space-y-4 mb-6 max-h-96 overflow-y-auto">
+              <div className="space-y-3 mb-4 max-h-[400px] overflow-y-auto">
                 {cart.map((item) => (
                   <div
                     key={`${item.id}-${item.selectedColor}`}
-                    className="flex gap-4 pb-4 border-b"
+                    className="flex gap-3 pb-3 border-b border-gray-100 last:border-0"
                   >
-                    <div className="relative w-20 h-20 flex-shrink-0 bg-gray-50 rounded-lg overflow-hidden">
+                    <div className="relative w-16 h-16 flex-shrink-0 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg overflow-hidden">
                       <Image
                         src={item.image}
                         alt={item.name}
                         fill
                         className="object-contain p-1"
                       />
+                      <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#d70018] text-white text-xs font-bold rounded-full flex items-center justify-center">
+                        {item.quantity}
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-sm text-gray-800 line-clamp-2 mb-1">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium text-sm text-gray-900 line-clamp-2 mb-1">
                         {item.name}
                       </h3>
-                      <p className="text-xs text-gray-600 mb-1">
+                      <p className="text-xs text-gray-500 mb-1">
                         {item.selectedColor}
                       </p>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-600">
-                          x{item.quantity}
-                        </span>
-                        <span className="font-bold text-red-600">
-                          {formatPrice(item.price * item.quantity)}
-                        </span>
-                      </div>
+                      <p className="font-bold text-sm text-[#d70018]">
+                        {formatPrice(item.price * item.quantity)}₫
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex justify-between text-gray-600">
+              <div className="space-y-3 py-4 border-t border-b">
+                <div className="flex justify-between text-sm text-gray-600">
                   <span>Tạm tính:</span>
-                  <span className="font-semibold">{formatPrice(getTotalPrice())}</span>
+                  <span className="font-semibold text-gray-900">{formatPrice(getTotalPrice())}₫</span>
                 </div>
-                <div className="flex justify-between text-gray-600">
+                <div className="flex justify-between text-sm text-gray-600">
                   <span>Phí vận chuyển:</span>
                   <span className="font-semibold text-green-600">Miễn phí</span>
                 </div>
-                <div className="border-t pt-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-lg font-bold text-gray-800">Tổng cộng:</span>
-                    <span className="text-2xl font-bold text-red-600">
-                      {formatPrice(getTotalPrice())}
-                    </span>
-                  </div>
+              </div>
+
+              <div className="py-4">
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-base font-bold text-gray-900">Tổng cộng:</span>
+                  <span className="text-2xl font-bold text-[#d70018]">
+                    {formatPrice(getTotalPrice())}₫
+                  </span>
                 </div>
               </div>
 
-              <div className="bg-blue-50 rounded-xl p-4 text-sm text-gray-700">
-                <p className="font-semibold mb-2">Chính sách:</p>
-                <ul className="space-y-1 text-xs">
-                  <li>✓ Miễn phí vận chuyển toàn quốc</li>
-                  <li>✓ Bảo hành chính hãng 12 tháng</li>
-                  <li>✓ Đổi trả trong 30 ngày</li>
-                  <li>✓ Hỗ trợ trả góp 0%</li>
-                </ul>
+              <div className="bg-gray-50 rounded-lg p-4 space-y-2">
+                <div className="flex items-center gap-2 text-sm text-gray-700">
+                  <Truck className="w-4 h-4 text-[#d70018]" />
+                  <span>Miễn phí vận chuyển toàn quốc</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-700">
+                  <Shield className="w-4 h-4 text-[#d70018]" />
+                  <span>Bảo hành chính hãng 12 tháng</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-700">
+                  <RotateCcw className="w-4 h-4 text-[#d70018]" />
+                  <span>Đổi trả trong 30 ngày</span>
+                </div>
               </div>
             </div>
           </div>

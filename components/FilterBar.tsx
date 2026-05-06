@@ -11,15 +11,14 @@ interface FilterBarProps {
 
 export default function FilterBar({ priceRange, setPriceRange, sortBy, setSortBy }: FilterBarProps) {
   return (
-    <div className="flex-1 bg-white rounded-lg p-3 flex flex-wrap gap-3 items-center border border-gray-200">
+    <div className="flex-1 bg-white rounded-lg border border-gray-200 p-2 flex flex-wrap gap-2 items-center text-sm">
       {/* Price Filter */}
       <div className="flex items-center gap-2">
-        <SlidersHorizontal className="w-4 h-4 text-gray-500" />
-        <span className="text-sm font-medium text-gray-700">Giá:</span>
+        <span className="text-gray-600">Giá:</span>
         <select
           value={priceRange}
           onChange={(e) => setPriceRange(e.target.value)}
-          className="text-sm border border-gray-300 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#d70018] focus:border-transparent bg-white"
+          className="border border-gray-300 rounded px-2 py-1 focus:outline-none focus:border-[#d70018] bg-white text-sm"
         >
           <option value="all">Tất cả</option>
           <option value="under10">Dưới 10 triệu</option>
@@ -29,16 +28,15 @@ export default function FilterBar({ priceRange, setPriceRange, sortBy, setSortBy
         </select>
       </div>
 
-      <div className="h-6 w-px bg-gray-300 hidden md:block"></div>
+      <div className="h-4 w-px bg-gray-300 hidden md:block"></div>
 
       {/* Sort */}
       <div className="flex items-center gap-2">
-        <ArrowUpDown className="w-4 h-4 text-gray-500" />
-        <span className="text-sm font-medium text-gray-700">Sắp xếp:</span>
+        <span className="text-gray-600">Sắp xếp:</span>
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className="text-sm border border-gray-300 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#d70018] focus:border-transparent bg-white"
+          className="border border-gray-300 rounded px-2 py-1 focus:outline-none focus:border-[#d70018] bg-white text-sm"
         >
           <option value="default">Mặc định</option>
           <option value="price-asc">Giá thấp → cao</option>
@@ -55,7 +53,7 @@ export default function FilterBar({ priceRange, setPriceRange, sortBy, setSortBy
             setPriceRange('all');
             setSortBy('default');
           }}
-          className="ml-auto text-sm text-[#d70018] hover:text-[#c00016] font-medium"
+          className="ml-auto text-[#d70018] hover:underline"
         >
           Xóa bộ lọc
         </button>

@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/contexts/CartContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "PhoneStore - Điện thoại chính hãng giá tốt",
-  description: "Hệ thống bán lẻ điện thoại di động uy tín hàng đầu Việt Nam",
+  title: "MegaMart - Siêu thị trực tuyến đa dạng sản phẩm",
+  description: "Mua sắm thông minh với hàng ngàn sản phẩm: Điện thoại, Laptop, Mỹ phẩm, Giày dép, Quần áo, Phụ kiện. Giá tốt, giao hàng nhanh, bảo hành chính hãng.",
+  keywords: "mua sắm online, điện thoại, laptop, mỹ phẩm, giày dép, quần áo, phụ kiện, siêu thị trực tuyến",
+  authors: [{ name: "MegaMart" }],
+  openGraph: {
+    title: "MegaMart - Siêu thị trực tuyến đa dạng sản phẩm",
+    description: "Mua sắm thông minh với hàng ngàn sản phẩm chính hãng, giá tốt nhất",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -28,9 +31,12 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${plusJakarta.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body className={`${plusJakarta.className} min-h-full flex flex-col`}>
         <CartProvider>
           <Header />
           <main className="flex-1">{children}</main>

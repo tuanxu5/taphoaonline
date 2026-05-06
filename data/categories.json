@@ -2,36 +2,36 @@
   {
     "id": "all",
     "name": "Tất cả",
+    "icon": "Grid3x3"
+  },
+  {
+    "id": "phone",
+    "name": "Điện thoại",
     "icon": "Smartphone"
   },
   {
-    "id": "apple",
-    "name": "Apple",
-    "icon": "Apple"
+    "id": "laptop",
+    "name": "Laptop",
+    "icon": "Laptop"
   },
   {
-    "id": "samsung",
-    "name": "Samsung",
-    "icon": "Smartphone"
+    "id": "cosmetics",
+    "name": "Mỹ phẩm",
+    "icon": "Sparkles"
   },
   {
-    "id": "xiaomi",
-    "name": "Xiaomi",
-    "icon": "Smartphone"
+    "id": "shoes",
+    "name": "Giày dép",
+    "icon": "ShoppingBag"
   },
   {
-    "id": "oppo",
-    "name": "OPPO",
-    "icon": "Smartphone"
+    "id": "fashion",
+    "name": "Quần áo",
+    "icon": "Shirt"
   },
   {
-    "id": "vivo",
-    "name": "Vivo",
-    "icon": "Smartphone"
-  },
-  {
-    "id": "google",
-    "name": "Google",
-    "icon": "Smartphone"
+    "id": "accessories",
+    "name": "Phụ kiện",
+    "icon": "Watch"
   }
 ]

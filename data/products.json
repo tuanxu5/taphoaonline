@@ -1,13 +1,14 @@
 [
   {
-    "id": "1",
-    "name": "iPhone 15 Pro Max",
+    "id": "phone-1",
+    "name": "iPhone 15 Pro Max 256GB - Chính hãng VN/A",
     "brand": "Apple",
+    "category": "phone",
     "price": 29990000,
     "originalPrice": 34990000,
-    "image": "https://images.unsplash.com/photo-1696446702183-cbd50c6e8e0b?w=500&q=80",
+    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80",
     "rating": 4.9,
-    "reviews": 1234,
+    "reviews": 2341,
     "specs": {
       "screen": "6.7\" Super Retina XDR",
       "cpu": "Apple A17 Pro",
@@ -16,20 +17,26 @@
       "battery": "4422mAh",
       "camera": "48MP + 12MP + 12MP"
     },
-    "colors": ["Titan Tự Nhiên", "Titan Xanh", "Titan Trắng", "Titan Đen"],
+    "colors": [
+      "Titan Tự Nhiên",
+      "Titan Xanh",
+      "Titan Trắng",
+      "Titan Đen"
+    ],
     "inStock": true,
     "isHot": true,
     "discount": 14
   },
   {
-    "id": "2",
-    "name": "Samsung Galaxy S24 Ultra",
+    "id": "phone-2",
+    "name": "Samsung Galaxy S24 Ultra 12GB 256GB",
     "brand": "Samsung",
+    "category": "phone",
     "price": 26990000,
     "originalPrice": 31990000,
-    "image": "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500&q=80",
+    "image": "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=500&q=80",
     "rating": 4.8,
-    "reviews": 987,
+    "reviews": 1876,
     "specs": {
       "screen": "6.8\" Dynamic AMOLED 2X",
       "cpu": "Snapdragon 8 Gen 3",
@@ -38,137 +45,1611 @@
       "battery": "5000mAh",
       "camera": "200MP + 50MP + 12MP + 10MP"
     },
-    "colors": ["Titan Xám", "Titan Đen", "Titan Tím", "Titan Vàng"],
+    "colors": [
+      "Titan Xám",
+      "Titan Đen",
+      "Titan Tím"
+    ],
     "inStock": true,
     "isHot": true,
     "discount": 16
   },
   {
-    "id": "3",
-    "name": "Xiaomi 14 Ultra",
+    "id": "phone-3",
+    "name": "Xiaomi 14 Ultra 16GB 512GB",
     "brand": "Xiaomi",
+    "category": "phone",
     "price": 24990000,
     "originalPrice": 29990000,
-    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&q=80",
+    "image": "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500&q=80",
     "rating": 4.7,
-    "reviews": 654,
+    "reviews": 1234,
     "specs": {
       "screen": "6.73\" AMOLED",
       "cpu": "Snapdragon 8 Gen 3",
       "ram": "16GB",
       "storage": "512GB",
       "battery": "5000mAh",
-      "camera": "50MP + 50MP + 50MP + 50MP"
+      "camera": "50MP Quad Camera"
     },
-    "colors": ["Đen", "Trắng", "Xanh"],
+    "colors": [
+      "Đen",
+      "Trắng",
+      "Xanh"
+    ],
     "inStock": true,
     "isHot": true,
     "discount": 17
   },
   {
-    "id": "4",
-    "name": "OPPO Find X7 Ultra",
+    "id": "phone-4",
+    "name": "OPPO Find X7 Ultra 16GB 512GB",
     "brand": "OPPO",
+    "category": "phone",
     "price": 22990000,
     "originalPrice": 26990000,
-    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80",
+    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&q=80",
     "rating": 4.6,
-    "reviews": 432,
+    "reviews": 987,
     "specs": {
       "screen": "6.82\" AMOLED",
       "cpu": "Snapdragon 8 Gen 3",
       "ram": "16GB",
       "storage": "512GB",
       "battery": "5000mAh",
-      "camera": "50MP + 50MP + 50MP + 50MP"
+      "camera": "50MP Quad Camera"
     },
-    "colors": ["Đen", "Nâu", "Xanh Dương"],
+    "colors": [
+      "Đen",
+      "Nâu"
+    ],
     "inStock": true,
     "discount": 15
   },
   {
-    "id": "5",
-    "name": "iPhone 14 Pro",
+    "id": "laptop-1",
+    "name": "MacBook Pro 14 M3 Pro 18GB 512GB",
     "brand": "Apple",
-    "price": 23990000,
-    "originalPrice": 27990000,
-    "image": "https://images.unsplash.com/photo-1663499482523-1c0d8c7a03c7?w=500&q=80",
-    "rating": 4.8,
-    "reviews": 2341,
-    "specs": {
-      "screen": "6.1\" Super Retina XDR",
-      "cpu": "Apple A16 Bionic",
-      "ram": "6GB",
-      "storage": "256GB",
-      "battery": "3200mAh",
-      "camera": "48MP + 12MP + 12MP"
-    },
-    "colors": ["Tím", "Vàng", "Bạc", "Đen"],
-    "inStock": true,
-    "discount": 14
-  },
-  {
-    "id": "6",
-    "name": "Samsung Galaxy Z Fold5",
-    "brand": "Samsung",
-    "price": 35990000,
-    "originalPrice": 40990000,
-    "image": "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=500&q=80",
-    "rating": 4.7,
+    "category": "laptop",
+    "price": 52990000,
+    "originalPrice": 59990000,
+    "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80",
+    "rating": 4.9,
     "reviews": 543,
     "specs": {
-      "screen": "7.6\" Dynamic AMOLED 2X",
-      "cpu": "Snapdragon 8 Gen 2",
-      "ram": "12GB",
-      "storage": "256GB",
-      "battery": "4400mAh",
-      "camera": "50MP + 12MP + 10MP"
+      "screen": "14.2\" Liquid Retina XDR",
+      "cpu": "Apple M3 Pro 11-core",
+      "ram": "18GB",
+      "storage": "512GB SSD",
+      "battery": "70Wh",
+      "camera": "1080p FaceTime HD"
     },
-    "colors": ["Kem", "Đen", "Xanh"],
+    "colors": [
+      "Space Grey",
+      "Silver"
+    ],
     "inStock": true,
     "isHot": true,
     "discount": 12
   },
   {
-    "id": "7",
-    "name": "Vivo X100 Pro",
-    "brand": "Vivo",
-    "price": 21990000,
-    "originalPrice": 25990000,
-    "image": "https://images.unsplash.com/photo-1592286927505-b0c2fc1d6a1e?w=500&q=80",
+    "id": "laptop-2",
+    "name": "Dell XPS 15 9530 i7-13700H 16GB 512GB RTX 4050",
+    "brand": "Dell",
+    "category": "laptop",
+    "price": 42990000,
+    "originalPrice": 49990000,
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 432,
+    "specs": {
+      "screen": "15.6\" FHD+ OLED",
+      "cpu": "Intel Core i7-13700H",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "battery": "86Wh",
+      "camera": "720p HD"
+    },
+    "colors": [
+      "Platinum Silver"
+    ],
+    "inStock": true,
+    "discount": 14
+  },
+  {
+    "id": "laptop-3",
+    "name": "ASUS ROG Strix G16 i7-13650HX RTX 4060 16GB 512GB",
+    "brand": "ASUS",
+    "category": "laptop",
+    "price": 35990000,
+    "originalPrice": 42990000,
+    "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 654,
+    "specs": {
+      "screen": "16\" FHD+ 165Hz",
+      "cpu": "Intel Core i7-13650HX",
+      "ram": "16GB DDR5",
+      "storage": "512GB SSD",
+      "battery": "90Wh",
+      "camera": "720p HD"
+    },
+    "colors": [
+      "Eclipse Gray"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 16
+  },
+  {
+    "id": "laptop-4",
+    "name": "Lenovo ThinkPad X1 Carbon Gen 11 i7 16GB 512GB",
+    "brand": "Lenovo",
+    "category": "laptop",
+    "price": 38990000,
+    "originalPrice": 44990000,
+    "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80",
     "rating": 4.6,
     "reviews": 321,
     "specs": {
-      "screen": "6.78\" AMOLED",
-      "cpu": "MediaTek Dimensity 9300",
+      "screen": "14\" WUXGA IPS",
+      "cpu": "Intel Core i7-1355U",
       "ram": "16GB",
-      "storage": "512GB",
-      "battery": "5400mAh",
-      "camera": "50MP + 50MP + 50MP"
+      "storage": "512GB SSD",
+      "battery": "57Wh",
+      "camera": "1080p FHD"
     },
-    "colors": ["Xanh", "Cam", "Đen"],
+    "colors": [
+      "Black"
+    ],
+    "inStock": true,
+    "discount": 13
+  },
+  {
+    "id": "cosmetics-1",
+    "name": "Serum Vitamin C Some By Mi 30ml - Dưỡng Sáng Da",
+    "brand": "Some By Mi",
+    "category": "cosmetics",
+    "price": 389000,
+    "originalPrice": 489000,
+    "image": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 2341,
+    "specs": {
+      "screen": "Dung tích: 30ml",
+      "cpu": "Xuất xứ: Hàn Quốc",
+      "ram": "HSD: 3 năm",
+      "storage": "Thành phần: Vitamin C",
+      "battery": "Công dụng: Dưỡng sáng",
+      "camera": "Phù hợp: Mọi loại da"
+    },
+    "colors": [
+      "Vàng"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 20
+  },
+  {
+    "id": "cosmetics-2",
+    "name": "Kem Chống Nắng Anessa Perfect UV 60ml SPF50+",
+    "brand": "Anessa",
+    "category": "cosmetics",
+    "price": 549000,
+    "originalPrice": 649000,
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80",
+    "rating": 4.9,
+    "reviews": 3210,
+    "specs": {
+      "screen": "Dung tích: 60ml",
+      "cpu": "Xuất xứ: Nhật Bản",
+      "ram": "HSD: 3 năm",
+      "storage": "SPF: 50+ PA++++",
+      "battery": "Chống nước",
+      "camera": "Phù hợp: Mọi loại da"
+    },
+    "colors": [
+      "Vàng Gold"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 15
+  },
+  {
+    "id": "cosmetics-3",
+    "name": "Son Kem Lì 3CE Velvet Lip Tint - Màu Đỏ Cam",
+    "brand": "3CE",
+    "category": "cosmetics",
+    "price": 299000,
+    "originalPrice": 399000,
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 1876,
+    "specs": {
+      "screen": "Dung tích: 4g",
+      "cpu": "Xuất xứ: Hàn Quốc",
+      "ram": "HSD: 3 năm",
+      "storage": "Màu: Đỏ Cam",
+      "battery": "Lì mịn",
+      "camera": "Lâu trôi 12h"
+    },
+    "colors": [
+      "Đỏ Cam",
+      "Hồng Nude",
+      "Đỏ Gạch"
+    ],
+    "inStock": true,
+    "discount": 25
+  },
+  {
+    "id": "cosmetics-4",
+    "name": "Sữa Rửa Mặt Cetaphil Gentle Skin Cleanser 500ml",
+    "brand": "Cetaphil",
+    "category": "cosmetics",
+    "price": 349000,
+    "originalPrice": 429000,
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 2543,
+    "specs": {
+      "screen": "Dung tích: 500ml",
+      "cpu": "Xuất xứ: Canada",
+      "ram": "HSD: 3 năm",
+      "storage": "Dịu nhẹ",
+      "battery": "Không xà phòng",
+      "camera": "Da nhạy cảm"
+    },
+    "colors": [
+      "Trắng"
+    ],
+    "inStock": true,
+    "discount": 19
+  },
+  {
+    "id": "shoes-1",
+    "name": "Giày Nike Air Force 1 '07 - Trắng Full",
+    "brand": "Nike",
+    "category": "shoes",
+    "price": 2990000,
+    "originalPrice": 3490000,
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+    "rating": 4.9,
+    "reviews": 3421,
+    "specs": {
+      "screen": "Size: 36-44",
+      "cpu": "Chất liệu: Da tổng hợp",
+      "ram": "Đế: Cao su",
+      "storage": "Xuất xứ: Vietnam",
+      "battery": "Bảo hành: 6 tháng",
+      "camera": "Phong cách: Thể thao"
+    },
+    "colors": [
+      "Trắng",
+      "Đen",
+      "Trắng Đen"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 14
+  },
+  {
+    "id": "shoes-2",
+    "name": "Giày Adidas Ultraboost 23 - Đen Trắng",
+    "brand": "Adidas",
+    "category": "shoes",
+    "price": 4290000,
+    "originalPrice": 4990000,
+    "image": "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 2134,
+    "specs": {
+      "screen": "Size: 36-45",
+      "cpu": "Chất liệu: Primeknit",
+      "ram": "Đế: Boost",
+      "storage": "Xuất xứ: Vietnam",
+      "battery": "Bảo hành: 6 tháng",
+      "camera": "Phong cách: Chạy bộ"
+    },
+    "colors": [
+      "Đen Trắng",
+      "Xám",
+      "Xanh Navy"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 14
+  },
+  {
+    "id": "shoes-3",
+    "name": "Dép Adidas Adilette Comfort - Đen Logo Trắng",
+    "brand": "Adidas",
+    "category": "shoes",
+    "price": 890000,
+    "originalPrice": 1090000,
+    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 4321,
+    "specs": {
+      "screen": "Size: 36-44",
+      "cpu": "Chất liệu: EVA",
+      "ram": "Đế: Cao su",
+      "storage": "Xuất xứ: Vietnam",
+      "battery": "Bảo hành: 3 tháng",
+      "camera": "Phong cách: Casual"
+    },
+    "colors": [
+      "Đen",
+      "Xanh Navy",
+      "Xám"
+    ],
+    "inStock": true,
+    "discount": 18
+  },
+  {
+    "id": "shoes-4",
+    "name": "Giày Converse Chuck Taylor All Star - Đen Classic",
+    "brand": "Converse",
+    "category": "shoes",
+    "price": 1490000,
+    "originalPrice": 1790000,
+    "image": "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 5432,
+    "specs": {
+      "screen": "Size: 35-44",
+      "cpu": "Chất liệu: Canvas",
+      "ram": "Đế: Cao su",
+      "storage": "Xuất xứ: Vietnam",
+      "battery": "Bảo hành: 6 tháng",
+      "camera": "Phong cách: Vintage"
+    },
+    "colors": [
+      "Đen",
+      "Trắng",
+      "Đỏ"
+    ],
+    "inStock": true,
+    "discount": 17
+  },
+  {
+    "id": "fashion-1",
+    "name": "Áo Thun Nam Uniqlo AIRism - Trắng Basic",
+    "brand": "Uniqlo",
+    "category": "fashion",
+    "price": 299000,
+    "originalPrice": 399000,
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 3210,
+    "specs": {
+      "screen": "Size: S, M, L, XL, XXL",
+      "cpu": "Chất liệu: AIRism",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Tốt",
+      "battery": "Thoáng mát",
+      "camera": "Phong cách: Basic"
+    },
+    "colors": [
+      "Trắng",
+      "Đen",
+      "Xám",
+      "Navy"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 25
+  },
+  {
+    "id": "fashion-2",
+    "name": "Quần Jean Nam Levi's 511 Slim Fit - Xanh Đậm",
+    "brand": "Levi's",
+    "category": "fashion",
+    "price": 1490000,
+    "originalPrice": 1890000,
+    "image": "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 2134,
+    "specs": {
+      "screen": "Size: 28-36",
+      "cpu": "Chất liệu: Denim",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Nhẹ",
+      "battery": "Form: Slim",
+      "camera": "Phong cách: Casual"
+    },
+    "colors": [
+      "Xanh Đậm",
+      "Xanh Nhạt",
+      "Đen"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 21
+  },
+  {
+    "id": "fashion-3",
+    "name": "Áo Khoác Hoodie Adidas Essentials - Đen Logo Trắng",
+    "brand": "Adidas",
+    "category": "fashion",
+    "price": 1290000,
+    "originalPrice": 1590000,
+    "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 1876,
+    "specs": {
+      "screen": "Size: S, M, L, XL, XXL",
+      "cpu": "Chất liệu: Cotton blend",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Tốt",
+      "battery": "Có mũ",
+      "camera": "Phong cách: Sporty"
+    },
+    "colors": [
+      "Đen",
+      "Xám",
+      "Navy"
+    ],
+    "inStock": true,
+    "discount": 19
+  },
+  {
+    "id": "fashion-4",
+    "name": "Váy Nữ Zara Mini Dress - Đen Thanh Lịch",
+    "brand": "Zara",
+    "category": "fashion",
+    "price": 890000,
+    "originalPrice": 1190000,
+    "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 1543,
+    "specs": {
+      "screen": "Size: S, M, L",
+      "cpu": "Chất liệu: Polyester",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Nhẹ",
+      "battery": "Dáng: A",
+      "camera": "Phong cách: Thanh lịch"
+    },
+    "colors": [
+      "Đen",
+      "Trắng",
+      "Đỏ"
+    ],
+    "inStock": true,
+    "discount": 25
+  },
+  {
+    "id": "accessories-1",
+    "name": "Tai Nghe Apple AirPods Pro 2 USB-C - Chính hãng VN/A",
+    "brand": "Apple",
+    "category": "accessories",
+    "price": 6490000,
+    "originalPrice": 7490000,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80",
+    "rating": 4.9,
+    "reviews": 2341,
+    "specs": {
+      "screen": "Kết nối: Bluetooth 5.3",
+      "cpu": "Chip: H2",
+      "ram": "Pin: 30h",
+      "storage": "Chống ồn: ANC",
+      "battery": "Sạc: USB-C",
+      "camera": "Chống nước: IPX4"
+    },
+    "colors": [
+      "Trắng"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 13
+  },
+  {
+    "id": "accessories-2",
+    "name": "Đồng Hồ Thông Minh Apple Watch Series 9 GPS 45mm",
+    "brand": "Apple",
+    "category": "accessories",
+    "price": 10990000,
+    "originalPrice": 12990000,
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 1876,
+    "specs": {
+      "screen": "Màn hình: 1.9\" OLED",
+      "cpu": "Chip: S9",
+      "ram": "Pin: 18h",
+      "storage": "Chống nước: 50m",
+      "battery": "GPS: Có",
+      "camera": "Cảm biến: ECG, SpO2"
+    },
+    "colors": [
+      "Midnight",
+      "Starlight",
+      "Pink"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 15
+  },
+  {
+    "id": "accessories-3",
+    "name": "Balo Laptop The North Face Borealis 28L - Đen",
+    "brand": "The North Face",
+    "category": "accessories",
+    "price": 2490000,
+    "originalPrice": 2990000,
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 1234,
+    "specs": {
+      "screen": "Dung tích: 28L",
+      "cpu": "Chất liệu: Polyester",
+      "ram": "Laptop: 15.6\"",
+      "storage": "Chống nước: Có",
+      "battery": "Ngăn: 5",
+      "camera": "Xuất xứ: Vietnam"
+    },
+    "colors": [
+      "Đen",
+      "Xám",
+      "Navy"
+    ],
+    "inStock": true,
+    "discount": 17
+  },
+  {
+    "id": "accessories-4",
+    "name": "Kính Mát Ray-Ban Aviator Classic - Vàng Đen",
+    "brand": "Ray-Ban",
+    "category": "accessories",
+    "price": 4290000,
+    "originalPrice": 4990000,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 987,
+    "specs": {
+      "screen": "Chất liệu: Kim loại",
+      "cpu": "Tròng: Polarized",
+      "ram": "UV: 100%",
+      "storage": "Xuất xứ: Italy",
+      "battery": "Bảo hành: 12 tháng",
+      "camera": "Phong cách: Classic"
+    },
+    "colors": [
+      "Vàng Đen",
+      "Bạc Xanh",
+      "Đen"
+    ],
+    "inStock": true,
+    "discount": 14
+  },
+  {
+    "id": "phone-5",
+    "name": "iPhone 14 128GB - Chính hãng VN/A",
+    "brand": "Apple",
+    "category": "phone",
+    "price": 18990000,
+    "originalPrice": 21990000,
+    "image": "https://images.unsplash.com/photo-1567581935884-3349723552ca?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 3210,
+    "specs": {
+      "screen": "6.1\" Super Retina XDR",
+      "cpu": "Apple A15 Bionic",
+      "ram": "6GB",
+      "storage": "128GB",
+      "battery": "3279mAh",
+      "camera": "12MP Dual Camera"
+    },
+    "colors": [
+      "Midnight",
+      "Starlight",
+      "Blue",
+      "Purple",
+      "Red"
+    ],
+    "inStock": true,
+    "discount": 14
+  },
+  {
+    "id": "phone-6",
+    "name": "Samsung Galaxy A54 5G 8GB 256GB",
+    "brand": "Samsung",
+    "category": "phone",
+    "price": 9990000,
+    "originalPrice": 11990000,
+    "image": "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 2134,
+    "specs": {
+      "screen": "6.4\" Super AMOLED",
+      "cpu": "Exynos 1380",
+      "ram": "8GB",
+      "storage": "256GB",
+      "battery": "5000mAh",
+      "camera": "50MP Triple Camera"
+    },
+    "colors": [
+      "Awesome Graphite",
+      "Awesome Violet"
+    ],
+    "inStock": true,
+    "discount": 17
+  },
+  {
+    "id": "phone-7",
+    "name": "Xiaomi Redmi Note 12 Pro 5G 8GB 256GB",
+    "brand": "Xiaomi",
+    "category": "phone",
+    "price": 7490000,
+    "originalPrice": 8990000,
+    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80",
+    "rating": 4.5,
+    "reviews": 3421,
+    "specs": {
+      "screen": "6.67\" AMOLED 120Hz",
+      "cpu": "Snapdragon 4 Gen 1",
+      "ram": "8GB",
+      "storage": "256GB",
+      "battery": "5000mAh",
+      "camera": "50MP Triple Camera"
+    },
+    "colors": [
+      "Midnight Black",
+      "Glacier Blue"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 17
+  },
+  {
+    "id": "phone-8",
+    "name": "OPPO Reno10 5G 8GB 256GB",
+    "brand": "OPPO",
+    "category": "phone",
+    "price": 9490000,
+    "originalPrice": 10990000,
+    "image": "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 1543,
+    "specs": {
+      "screen": "6.7\" AMOLED 120Hz",
+      "cpu": "MediaTek Dimensity 7050",
+      "ram": "8GB",
+      "storage": "256GB",
+      "battery": "5000mAh",
+      "camera": "64MP Triple Camera"
+    },
+    "colors": [
+      "Ice Blue",
+      "Silvery Grey"
+    ],
+    "inStock": true,
+    "discount": 14
+  },
+  {
+    "id": "phone-9",
+    "name": "Vivo Y36 8GB 128GB",
+    "brand": "Vivo",
+    "category": "phone",
+    "price": 5990000,
+    "originalPrice": 6990000,
+    "image": "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500&q=80",
+    "rating": 4.4,
+    "reviews": 1876,
+    "specs": {
+      "screen": "6.64\" IPS LCD",
+      "cpu": "Snapdragon 680",
+      "ram": "8GB",
+      "storage": "128GB",
+      "battery": "5000mAh",
+      "camera": "50MP Dual Camera"
+    },
+    "colors": [
+      "Meteor Black",
+      "Vibrant Gold"
+    ],
+    "inStock": true,
+    "discount": 14
+  },
+  {
+    "id": "phone-10",
+    "name": "Realme 11 Pro 5G 8GB 256GB",
+    "brand": "Realme",
+    "category": "phone",
+    "price": 8490000,
+    "originalPrice": 9990000,
+    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&q=80",
+    "rating": 4.5,
+    "reviews": 1234,
+    "specs": {
+      "screen": "6.7\" AMOLED 120Hz",
+      "cpu": "MediaTek Dimensity 7050",
+      "ram": "8GB",
+      "storage": "256GB",
+      "battery": "5000mAh",
+      "camera": "100MP Dual Camera"
+    },
+    "colors": [
+      "Sunrise Beige",
+      "Oasis Green"
+    ],
     "inStock": true,
     "discount": 15
   },
   {
-    "id": "8",
-    "name": "Google Pixel 8 Pro",
-    "brand": "Google",
-    "price": 24990000,
-    "originalPrice": 27990000,
-    "image": "https://images.unsplash.com/photo-1598618443855-232ee0f819f2?w=500&q=80",
+    "id": "laptop-5",
+    "name": "HP Pavilion 15 i5-1335U 16GB 512GB",
+    "brand": "HP",
+    "category": "laptop",
+    "price": 16990000,
+    "originalPrice": 19990000,
+    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80",
+    "rating": 4.5,
+    "reviews": 876,
+    "specs": {
+      "screen": "15.6\" FHD IPS",
+      "cpu": "Intel Core i5-1335U",
+      "ram": "16GB DDR4",
+      "storage": "512GB SSD",
+      "battery": "41Wh",
+      "camera": "720p HD"
+    },
+    "colors": [
+      "Natural Silver"
+    ],
+    "inStock": true,
+    "discount": 15
+  },
+  {
+    "id": "laptop-6",
+    "name": "Acer Aspire 5 Ryzen 5 7520U 16GB 512GB",
+    "brand": "Acer",
+    "category": "laptop",
+    "price": 14990000,
+    "originalPrice": 17990000,
+    "image": "https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=500&q=80",
+    "rating": 4.4,
+    "reviews": 654,
+    "specs": {
+      "screen": "15.6\" FHD IPS",
+      "cpu": "AMD Ryzen 5 7520U",
+      "ram": "16GB DDR5",
+      "storage": "512GB SSD",
+      "battery": "50Wh",
+      "camera": "720p HD"
+    },
+    "colors": [
+      "Pure Silver"
+    ],
+    "inStock": true,
+    "discount": 17
+  },
+  {
+    "id": "laptop-7",
+    "name": "MSI Gaming GF63 i5-12450H RTX 2050 8GB 512GB",
+    "brand": "MSI",
+    "category": "laptop",
+    "price": 18990000,
+    "originalPrice": 22990000,
+    "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 543,
+    "specs": {
+      "screen": "15.6\" FHD 144Hz",
+      "cpu": "Intel Core i5-12450H",
+      "ram": "8GB DDR4",
+      "storage": "512GB SSD",
+      "battery": "51Wh",
+      "camera": "720p HD"
+    },
+    "colors": [
+      "Black"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 17
+  },
+  {
+    "id": "laptop-8",
+    "name": "MacBook Air M2 13 8GB 256GB",
+    "brand": "Apple",
+    "category": "laptop",
+    "price": 27990000,
+    "originalPrice": 32990000,
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&q=80",
+    "rating": 4.9,
+    "reviews": 2341,
+    "specs": {
+      "screen": "13.6\" Liquid Retina",
+      "cpu": "Apple M2 8-core",
+      "ram": "8GB",
+      "storage": "256GB SSD",
+      "battery": "52.6Wh",
+      "camera": "1080p FaceTime HD"
+    },
+    "colors": [
+      "Midnight",
+      "Starlight",
+      "Space Grey",
+      "Silver"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 15
+  },
+  {
+    "id": "laptop-9",
+    "name": "LG Gram 16 i7-1360P 16GB 512GB",
+    "brand": "LG",
+    "category": "laptop",
+    "price": 32990000,
+    "originalPrice": 38990000,
+    "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80",
     "rating": 4.7,
+    "reviews": 432,
+    "specs": {
+      "screen": "16\" WQXGA IPS",
+      "cpu": "Intel Core i7-1360P",
+      "ram": "16GB DDR5",
+      "storage": "512GB SSD",
+      "battery": "80Wh",
+      "camera": "1080p FHD"
+    },
+    "colors": [
+      "Snow White",
+      "Obsidian Black"
+    ],
+    "inStock": true,
+    "discount": 15
+  },
+  {
+    "id": "laptop-10",
+    "name": "Gigabyte G5 i5-12500H RTX 4060 16GB 512GB",
+    "brand": "Gigabyte",
+    "category": "laptop",
+    "price": 25990000,
+    "originalPrice": 29990000,
+    "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80",
+    "rating": 4.6,
     "reviews": 765,
     "specs": {
-      "screen": "6.7\" LTPO OLED",
-      "cpu": "Google Tensor G3",
-      "ram": "12GB",
-      "storage": "256GB",
-      "battery": "5050mAh",
-      "camera": "50MP + 48MP + 48MP"
+      "screen": "15.6\" FHD 144Hz",
+      "cpu": "Intel Core i5-12500H",
+      "ram": "16GB DDR5",
+      "storage": "512GB SSD",
+      "battery": "54Wh",
+      "camera": "720p HD"
     },
-    "colors": ["Obsidian", "Porcelain", "Bay"],
+    "colors": [
+      "Black"
+    ],
     "inStock": true,
-    "discount": 11
+    "discount": 13
+  },
+  {
+    "id": "cosmetics-5",
+    "name": "Kem Dưỡng Ẩm La Roche-Posay Toleriane 40ml",
+    "brand": "La Roche-Posay",
+    "category": "cosmetics",
+    "price": 449000,
+    "originalPrice": 549000,
+    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 1876,
+    "specs": {
+      "screen": "Dung tích: 40ml",
+      "cpu": "Xuất xứ: Pháp",
+      "ram": "HSD: 3 năm",
+      "storage": "Dưỡng ẩm",
+      "battery": "Da nhạy cảm",
+      "camera": "Không mùi"
+    },
+    "colors": [
+      "Trắng"
+    ],
+    "inStock": true,
+    "discount": 18
+  },
+  {
+    "id": "cosmetics-6",
+    "name": "Nước Tẩy Trang Bioderma Sensibio H2O 500ml",
+    "brand": "Bioderma",
+    "category": "cosmetics",
+    "price": 399000,
+    "originalPrice": 499000,
+    "image": "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=500&q=80",
+    "rating": 4.9,
+    "reviews": 4321,
+    "specs": {
+      "screen": "Dung tích: 500ml",
+      "cpu": "Xuất xứ: Pháp",
+      "ram": "HSD: 3 năm",
+      "storage": "Tẩy trang",
+      "battery": "Dịu nhẹ",
+      "camera": "Da nhạy cảm"
+    },
+    "colors": [
+      "Hồng"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 20
+  },
+  {
+    "id": "cosmetics-7",
+    "name": "Mặt Nạ Innisfree Green Tea 20ml",
+    "brand": "Innisfree",
+    "category": "cosmetics",
+    "price": 35000,
+    "originalPrice": 45000,
+    "image": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 5432,
+    "specs": {
+      "screen": "Dung tích: 20ml",
+      "cpu": "Xuất xứ: Hàn Quốc",
+      "ram": "HSD: 2 năm",
+      "storage": "Trà xanh",
+      "battery": "Dưỡng ẩm",
+      "camera": "Mọi loại da"
+    },
+    "colors": [
+      "Xanh"
+    ],
+    "inStock": true,
+    "discount": 22
+  },
+  {
+    "id": "cosmetics-8",
+    "name": "Phấn Nước Cushion Laneige Neo 15g",
+    "brand": "Laneige",
+    "category": "cosmetics",
+    "price": 749000,
+    "originalPrice": 899000,
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 2134,
+    "specs": {
+      "screen": "Dung tích: 15g",
+      "cpu": "Xuất xứ: Hàn Quốc",
+      "ram": "HSD: 3 năm",
+      "storage": "SPF 50+ PA+++",
+      "battery": "Lâu trôi",
+      "camera": "Che phủ tốt"
+    },
+    "colors": [
+      "21N",
+      "23N",
+      "31N"
+    ],
+    "inStock": true,
+    "discount": 17
+  },
+  {
+    "id": "cosmetics-9",
+    "name": "Toner AHA BHA PHA 30 Days Miracle 150ml",
+    "brand": "Some By Mi",
+    "category": "cosmetics",
+    "price": 329000,
+    "originalPrice": 429000,
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 3210,
+    "specs": {
+      "screen": "Dung tích: 150ml",
+      "cpu": "Xuất xứ: Hàn Quốc",
+      "ram": "HSD: 3 năm",
+      "storage": "AHA BHA PHA",
+      "battery": "Trị mụn",
+      "camera": "Da dầu mụn"
+    },
+    "colors": [
+      "Xanh"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 23
+  },
+  {
+    "id": "cosmetics-10",
+    "name": "Mascara Maybelline Lash Sensational Sky High",
+    "brand": "Maybelline",
+    "category": "cosmetics",
+    "price": 249000,
+    "originalPrice": 319000,
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 2876,
+    "specs": {
+      "screen": "Dung tích: 7.2ml",
+      "cpu": "Xuất xứ: USA",
+      "ram": "HSD: 2 năm",
+      "storage": "Cong mi",
+      "battery": "Dài mi",
+      "camera": "Không lem"
+    },
+    "colors": [
+      "Very Black",
+      "Brownish Black"
+    ],
+    "inStock": true,
+    "discount": 22
+  },
+  {
+    "id": "shoes-5",
+    "name": "Giày Vans Old Skool - Đen Trắng Classic",
+    "brand": "Vans",
+    "category": "shoes",
+    "price": 1690000,
+    "originalPrice": 1990000,
+    "image": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 4321,
+    "specs": {
+      "screen": "Size: 35-44",
+      "cpu": "Chất liệu: Canvas + Suede",
+      "ram": "Đế: Cao su",
+      "storage": "Xuất xứ: Vietnam",
+      "battery": "Bảo hành: 6 tháng",
+      "camera": "Phong cách: Skate"
+    },
+    "colors": [
+      "Đen Trắng",
+      "Full Black",
+      "Navy"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 15
+  },
+  {
+    "id": "shoes-6",
+    "name": "Giày Puma RS-X - Trắng Xanh",
+    "brand": "Puma",
+    "category": "shoes",
+    "price": 2490000,
+    "originalPrice": 2990000,
+    "image": "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 1876,
+    "specs": {
+      "screen": "Size: 36-44",
+      "cpu": "Chất liệu: Mesh + Leather",
+      "ram": "Đế: EVA",
+      "storage": "Xuất xứ: Vietnam",
+      "battery": "Bảo hành: 6 tháng",
+      "camera": "Phong cách: Retro"
+    },
+    "colors": [
+      "Trắng Xanh",
+      "Đen Đỏ",
+      "Xám"
+    ],
+    "inStock": true,
+    "discount": 17
+  },
+  {
+    "id": "shoes-7",
+    "name": "Dép Nike Victori One - Đen Logo Trắng",
+    "brand": "Nike",
+    "category": "shoes",
+    "price": 690000,
+    "originalPrice": 890000,
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 3210,
+    "specs": {
+      "screen": "Size: 36-45",
+      "cpu": "Chất liệu: Synthetic",
+      "ram": "Đế: Phylon",
+      "storage": "Xuất xứ: Vietnam",
+      "battery": "Bảo hành: 3 tháng",
+      "camera": "Phong cách: Sport"
+    },
+    "colors": [
+      "Đen",
+      "Trắng",
+      "Navy"
+    ],
+    "inStock": true,
+    "discount": 22
+  },
+  {
+    "id": "shoes-8",
+    "name": "Giày New Balance 530 - Xám Trắng",
+    "brand": "New Balance",
+    "category": "shoes",
+    "price": 2790000,
+    "originalPrice": 3290000,
+    "image": "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 2134,
+    "specs": {
+      "screen": "Size: 36-44",
+      "cpu": "Chất liệu: Mesh + Suede",
+      "ram": "Đế: ABZORB",
+      "storage": "Xuất xứ: Vietnam",
+      "battery": "Bảo hành: 6 tháng",
+      "camera": "Phong cách: Retro"
+    },
+    "colors": [
+      "Xám Trắng",
+      "Navy",
+      "Đen"
+    ],
+    "inStock": true,
+    "discount": 15
+  },
+  {
+    "id": "shoes-9",
+    "name": "Giày Biti's Hunter X - Đen Đỏ",
+    "brand": "Biti's",
+    "category": "shoes",
+    "price": 990000,
+    "originalPrice": 1290000,
+    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&q=80",
+    "rating": 4.5,
+    "reviews": 5432,
+    "specs": {
+      "screen": "Size: 35-44",
+      "cpu": "Chất liệu: Knit",
+      "ram": "Đế: Cao su",
+      "storage": "Xuất xứ: Vietnam",
+      "battery": "Bảo hành: 6 tháng",
+      "camera": "Phong cách: Street"
+    },
+    "colors": [
+      "Đen Đỏ",
+      "Trắng",
+      "Navy"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 23
+  },
+  {
+    "id": "shoes-10",
+    "name": "Giày Thể Thao Ananas Vintas - Xanh Mint",
+    "brand": "Ananas",
+    "category": "shoes",
+    "price": 590000,
+    "originalPrice": 790000,
+    "image": "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 3876,
+    "specs": {
+      "screen": "Size: 35-43",
+      "cpu": "Chất liệu: Canvas",
+      "ram": "Đế: Cao su",
+      "storage": "Xuất xứ: Vietnam",
+      "battery": "Bảo hành: 6 tháng",
+      "camera": "Phong cách: Casual"
+    },
+    "colors": [
+      "Xanh Mint",
+      "Hồng",
+      "Vàng"
+    ],
+    "inStock": true,
+    "discount": 25
+  },
+  {
+    "id": "fashion-5",
+    "name": "Áo Polo Nam Lacoste - Trắng Logo Xanh",
+    "brand": "Lacoste",
+    "category": "fashion",
+    "price": 2490000,
+    "originalPrice": 2990000,
+    "image": "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 1234,
+    "specs": {
+      "screen": "Size: S, M, L, XL, XXL",
+      "cpu": "Chất liệu: Cotton Pique",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Nhẹ",
+      "battery": "Thoáng mát",
+      "camera": "Phong cách: Classic"
+    },
+    "colors": [
+      "Trắng",
+      "Navy",
+      "Đen",
+      "Xanh Lá"
+    ],
+    "inStock": true,
+    "discount": 17
+  },
+  {
+    "id": "fashion-6",
+    "name": "Quần Short Kaki Nam Routine - Be",
+    "brand": "Routine",
+    "category": "fashion",
+    "price": 399000,
+    "originalPrice": 499000,
+    "image": "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500&q=80",
+    "rating": 4.5,
+    "reviews": 2876,
+    "specs": {
+      "screen": "Size: 28-36",
+      "cpu": "Chất liệu: Kaki",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Nhẹ",
+      "battery": "Form: Slim",
+      "camera": "Phong cách: Casual"
+    },
+    "colors": [
+      "Be",
+      "Xanh Navy",
+      "Đen",
+      "Xám"
+    ],
+    "inStock": true,
+    "discount": 20
+  },
+  {
+    "id": "fashion-7",
+    "name": "Áo Sơ Mi Nam H&M Slim Fit - Trắng",
+    "brand": "H&M",
+    "category": "fashion",
+    "price": 599000,
+    "originalPrice": 799000,
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 1876,
+    "specs": {
+      "screen": "Size: S, M, L, XL",
+      "cpu": "Chất liệu: Cotton",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Không",
+      "battery": "Form: Slim",
+      "camera": "Phong cách: Formal"
+    },
+    "colors": [
+      "Trắng",
+      "Xanh Nhạt",
+      "Hồng"
+    ],
+    "inStock": true,
+    "discount": 25
+  },
+  {
+    "id": "fashion-8",
+    "name": "Áo Thun Nữ Uniqlo U - Đen Basic",
+    "brand": "Uniqlo",
+    "category": "fashion",
+    "price": 199000,
+    "originalPrice": 299000,
+    "image": "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 4321,
+    "specs": {
+      "screen": "Size: XS, S, M, L, XL",
+      "cpu": "Chất liệu: Cotton 100%",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Nhẹ",
+      "battery": "Form: Regular",
+      "camera": "Phong cách: Basic"
+    },
+    "colors": [
+      "Đen",
+      "Trắng",
+      "Xám",
+      "Navy",
+      "Be"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 33
+  },
+  {
+    "id": "fashion-9",
+    "name": "Quần Jogger Nam Adidas Essentials - Đen",
+    "brand": "Adidas",
+    "category": "fashion",
+    "price": 990000,
+    "originalPrice": 1290000,
+    "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 2134,
+    "specs": {
+      "screen": "Size: S, M, L, XL, XXL",
+      "cpu": "Chất liệu: Cotton blend",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Tốt",
+      "battery": "Có túi",
+      "camera": "Phong cách: Sport"
+    },
+    "colors": [
+      "Đen",
+      "Xám",
+      "Navy"
+    ],
+    "inStock": true,
+    "discount": 23
+  },
+  {
+    "id": "fashion-10",
+    "name": "Áo Khoác Gió Nam The North Face - Đen",
+    "brand": "The North Face",
+    "category": "fashion",
+    "price": 3490000,
+    "originalPrice": 4290000,
+    "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 987,
+    "specs": {
+      "screen": "Size: S, M, L, XL",
+      "cpu": "Chất liệu: Nylon",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Chống nước",
+      "battery": "Có mũ",
+      "camera": "Phong cách: Outdoor"
+    },
+    "colors": [
+      "Đen",
+      "Navy",
+      "Xanh Lá"
+    ],
+    "inStock": true,
+    "discount": 19
+  },
+  {
+    "id": "fashion-11",
+    "name": "Váy Maxi Nữ Mango - Hoa Nhí",
+    "brand": "Mango",
+    "category": "fashion",
+    "price": 1290000,
+    "originalPrice": 1690000,
+    "image": "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 1543,
+    "specs": {
+      "screen": "Size: S, M, L",
+      "cpu": "Chất liệu: Viscose",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Nhẹ",
+      "battery": "Dáng: Maxi",
+      "camera": "Phong cách: Boho"
+    },
+    "colors": [
+      "Hoa Nhí",
+      "Đen",
+      "Xanh"
+    ],
+    "inStock": true,
+    "discount": 24
+  },
+  {
+    "id": "fashion-12",
+    "name": "Quần Jean Nữ Levi's 721 High Rise Skinny",
+    "brand": "Levi's",
+    "category": "fashion",
+    "price": 1690000,
+    "originalPrice": 2090000,
+    "image": "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 2341,
+    "specs": {
+      "screen": "Size: 25-32",
+      "cpu": "Chất liệu: Denim",
+      "ram": "Xuất xứ: Vietnam",
+      "storage": "Co giãn: Tốt",
+      "battery": "Form: Skinny",
+      "camera": "Phong cách: Modern"
+    },
+    "colors": [
+      "Xanh Đậm",
+      "Xanh Nhạt",
+      "Đen"
+    ],
+    "inStock": true,
+    "discount": 19
+  },
+  {
+    "id": "accessories-5",
+    "name": "Tai Nghe Sony WH-1000XM5 - Chống Ồn",
+    "brand": "Sony",
+    "category": "accessories",
+    "price": 8990000,
+    "originalPrice": 10990000,
+    "image": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500&q=80",
+    "rating": 4.9,
+    "reviews": 1876,
+    "specs": {
+      "screen": "Kết nối: Bluetooth 5.2",
+      "cpu": "Chip: V1",
+      "ram": "Pin: 30h",
+      "storage": "Chống ồn: ANC",
+      "battery": "Sạc: USB-C",
+      "camera": "Âm thanh: Hi-Res"
+    },
+    "colors": [
+      "Đen",
+      "Bạc"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 18
+  },
+  {
+    "id": "accessories-6",
+    "name": "Đồng Hồ Casio G-Shock GA-2100 - Đen",
+    "brand": "Casio",
+    "category": "accessories",
+    "price": 3290000,
+    "originalPrice": 3890000,
+    "image": "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 3210,
+    "specs": {
+      "screen": "Màn hình: Analog-Digital",
+      "cpu": "Chống nước: 200m",
+      "ram": "Pin: 3 năm",
+      "storage": "Chống sốc",
+      "battery": "Đèn LED",
+      "camera": "Phong cách: Sport"
+    },
+    "colors": [
+      "Đen",
+      "Xanh Navy",
+      "Xám"
+    ],
+    "inStock": true,
+    "discount": 15
+  },
+  {
+    "id": "accessories-7",
+    "name": "Ví Nam Bellroy Hide & Seek - Da Thật",
+    "brand": "Bellroy",
+    "category": "accessories",
+    "price": 2490000,
+    "originalPrice": 2990000,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 876,
+    "specs": {
+      "screen": "Chất liệu: Da bò",
+      "cpu": "Xuất xứ: Australia",
+      "ram": "Ngăn: 8",
+      "storage": "Thẻ: 12",
+      "battery": "Bảo hành: 3 năm",
+      "camera": "Phong cách: Minimalist"
+    },
+    "colors": [
+      "Nâu",
+      "Đen",
+      "Navy"
+    ],
+    "inStock": true,
+    "discount": 17
+  },
+  {
+    "id": "accessories-8",
+    "name": "Túi Đeo Chéo Herschel Cruz - Đen",
+    "brand": "Herschel",
+    "category": "accessories",
+    "price": 890000,
+    "originalPrice": 1190000,
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 1543,
+    "specs": {
+      "screen": "Dung tích: 3L",
+      "cpu": "Chất liệu: Polyester",
+      "ram": "Ngăn: 3",
+      "storage": "Chống nước: Nhẹ",
+      "battery": "Dây đeo: Có",
+      "camera": "Phong cách: Street"
+    },
+    "colors": [
+      "Đen",
+      "Navy",
+      "Xám"
+    ],
+    "inStock": true,
+    "discount": 25
+  },
+  {
+    "id": "accessories-9",
+    "name": "Mũ Lưỡi Trai New Era 9FORTY - Yankees",
+    "brand": "New Era",
+    "category": "accessories",
+    "price": 790000,
+    "originalPrice": 990000,
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 2134,
+    "specs": {
+      "screen": "Size: One Size",
+      "cpu": "Chất liệu: Cotton",
+      "ram": "Xuất xứ: China",
+      "storage": "Điều chỉnh: Có",
+      "battery": "Logo: Thêu",
+      "camera": "Phong cách: Sport"
+    },
+    "colors": [
+      "Navy",
+      "Đen",
+      "Xám"
+    ],
+    "inStock": true,
+    "discount": 20
+  },
+  {
+    "id": "accessories-10",
+    "name": "Thắt Lưng Da Nam Gucci GG - Đen",
+    "brand": "Gucci",
+    "category": "accessories",
+    "price": 8990000,
+    "originalPrice": 10990000,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 654,
+    "specs": {
+      "screen": "Size: 85-110cm",
+      "cpu": "Chất liệu: Da bò",
+      "ram": "Xuất xứ: Italy",
+      "storage": "Khóa: GG Logo",
+      "battery": "Bảo hành: 12 tháng",
+      "camera": "Phong cách: Luxury"
+    },
+    "colors": [
+      "Đen",
+      "Nâu"
+    ],
+    "inStock": true,
+    "discount": 18
+  },
+  {
+    "id": "accessories-11",
+    "name": "Chuột Không Dây Logitech MX Master 3S",
+    "brand": "Logitech",
+    "category": "accessories",
+    "price": 2490000,
+    "originalPrice": 2990000,
+    "image": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500&q=80",
+    "rating": 4.9,
+    "reviews": 1876,
+    "specs": {
+      "screen": "Kết nối: Bluetooth + USB",
+      "cpu": "DPI: 8000",
+      "ram": "Pin: 70 ngày",
+      "storage": "Sạc: USB-C",
+      "battery": "Nút: 7",
+      "camera": "Phong cách: Ergonomic"
+    },
+    "colors": [
+      "Đen",
+      "Xám"
+    ],
+    "inStock": true,
+    "discount": 17
+  },
+  {
+    "id": "accessories-12",
+    "name": "Bàn Phím Cơ Keychron K8 Pro - RGB",
+    "brand": "Keychron",
+    "category": "accessories",
+    "price": 2990000,
+    "originalPrice": 3490000,
+    "image": "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 1234,
+    "specs": {
+      "screen": "Kết nối: Bluetooth + Cable",
+      "cpu": "Switch: Gateron",
+      "ram": "Pin: 240h",
+      "storage": "Sạc: USB-C",
+      "battery": "RGB: Có",
+      "camera": "Layout: TKL"
+    },
+    "colors": [
+      "Đen",
+      "Trắng"
+    ],
+    "inStock": true,
+    "isHot": true,
+    "discount": 14
   }
 ]

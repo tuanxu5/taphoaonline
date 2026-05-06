@@ -1,0 +1,308 @@
+/**
+ * Create Sample Product Data
+ * 
+ * Script này tạo dữ liệu mẫu cho website
+ * Sử dụng khi không thể crawl từ Shopee
+ */
+
+const fs = require('fs');
+
+// Sample products data
+const sampleProducts = [
+  {
+    id: "sample-1",
+    name: "iPhone 15 Pro Max 256GB - Chính hãng VN/A",
+    brand: "Apple",
+    price: 29990000,
+    originalPrice: 34990000,
+    image: "https://images.unsplash.com/photo-1696446702183-cbd50c6e8e0b?w=500&q=80",
+    rating: 4.9,
+    reviews: 2341,
+    specs: {
+      screen: "6.7\" Super Retina XDR",
+      cpu: "Apple A17 Pro",
+      ram: "8GB",
+      storage: "256GB",
+      battery: "4422mAh",
+      camera: "48MP + 12MP + 12MP"
+    },
+    colors: ["Titan Tự Nhiên", "Titan Xanh", "Titan Trắng", "Titan Đen"],
+    inStock: true,
+    isHot: true,
+    discount: 14
+  },
+  {
+    id: "sample-2",
+    name: "Samsung Galaxy S24 Ultra 12GB 256GB",
+    brand: "Samsung",
+    price: 26990000,
+    originalPrice: 31990000,
+    image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500&q=80",
+    rating: 4.8,
+    reviews: 1876,
+    specs: {
+      screen: "6.8\" Dynamic AMOLED 2X",
+      cpu: "Snapdragon 8 Gen 3",
+      ram: "12GB",
+      storage: "256GB",
+      battery: "5000mAh",
+      camera: "200MP + 50MP + 12MP + 10MP"
+    },
+    colors: ["Titan Xám", "Titan Đen", "Titan Tím", "Titan Vàng"],
+    inStock: true,
+    isHot: true,
+    discount: 16
+  },
+  {
+    id: "sample-3",
+    name: "Xiaomi 14 Ultra 16GB 512GB - Hàng chính hãng",
+    brand: "Xiaomi",
+    price: 24990000,
+    originalPrice: 29990000,
+    image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&q=80",
+    rating: 4.7,
+    reviews: 1234,
+    specs: {
+      screen: "6.73\" AMOLED",
+      cpu: "Snapdragon 8 Gen 3",
+      ram: "16GB",
+      storage: "512GB",
+      battery: "5000mAh",
+      camera: "50MP + 50MP + 50MP + 50MP"
+    },
+    colors: ["Đen", "Trắng", "Xanh"],
+    inStock: true,
+    isHot: true,
+    discount: 17
+  },
+  {
+    id: "sample-4",
+    name: "OPPO Find X7 Ultra 16GB 512GB",
+    brand: "OPPO",
+    price: 22990000,
+    originalPrice: 26990000,
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80",
+    rating: 4.6,
+    reviews: 987,
+    specs: {
+      screen: "6.82\" AMOLED",
+      cpu: "Snapdragon 8 Gen 3",
+      ram: "16GB",
+      storage: "512GB",
+      battery: "5000mAh",
+      camera: "50MP + 50MP + 50MP + 50MP"
+    },
+    colors: ["Đen", "Nâu", "Xanh Dương"],
+    inStock: true,
+    discount: 15
+  },
+  {
+    id: "sample-5",
+    name: "Vivo X100 Pro 16GB 512GB - Chính hãng",
+    brand: "Vivo",
+    price: 21990000,
+    originalPrice: 25990000,
+    image: "https://images.unsplash.com/photo-1592286927505-b0c2fc1d6a1e?w=500&q=80",
+    rating: 4.6,
+    reviews: 765,
+    specs: {
+      screen: "6.78\" AMOLED",
+      cpu: "MediaTek Dimensity 9300",
+      ram: "16GB",
+      storage: "512GB",
+      battery: "5400mAh",
+      camera: "50MP + 50MP + 50MP"
+    },
+    colors: ["Xanh", "Cam", "Đen"],
+    inStock: true,
+    discount: 15
+  },
+  {
+    id: "sample-6",
+    name: "Google Pixel 8 Pro 12GB 256GB",
+    brand: "Google",
+    price: 24990000,
+    originalPrice: 27990000,
+    image: "https://images.unsplash.com/photo-1598618443855-232ee0f819f2?w=500&q=80",
+    rating: 4.7,
+    reviews: 654,
+    specs: {
+      screen: "6.7\" LTPO OLED",
+      cpu: "Google Tensor G3",
+      ram: "12GB",
+      storage: "256GB",
+      battery: "5050mAh",
+      camera: "50MP + 48MP + 48MP"
+    },
+    colors: ["Obsidian", "Porcelain", "Bay"],
+    inStock: true,
+    discount: 11
+  },
+  {
+    id: "sample-7",
+    name: "Realme GT 5 Pro 12GB 256GB",
+    brand: "Realme",
+    price: 12990000,
+    originalPrice: 15990000,
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80",
+    rating: 4.5,
+    reviews: 543,
+    specs: {
+      screen: "6.78\" AMOLED",
+      cpu: "Snapdragon 8 Gen 3",
+      ram: "12GB",
+      storage: "256GB",
+      battery: "5400mAh",
+      camera: "50MP + 50MP + 8MP"
+    },
+    colors: ["Đen", "Xanh", "Trắng"],
+    inStock: true,
+    discount: 19
+  },
+  {
+    id: "sample-8",
+    name: "OnePlus 12 16GB 512GB",
+    brand: "OnePlus",
+    price: 19990000,
+    originalPrice: 23990000,
+    image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&q=80",
+    rating: 4.7,
+    reviews: 432,
+    specs: {
+      screen: "6.82\" AMOLED",
+      cpu: "Snapdragon 8 Gen 3",
+      ram: "16GB",
+      storage: "512GB",
+      battery: "5400mAh",
+      camera: "50MP + 64MP + 48MP"
+    },
+    colors: ["Đen", "Xanh Lá"],
+    inStock: true,
+    discount: 17
+  },
+  {
+    id: "sample-9",
+    name: "iPhone 14 Pro 256GB - Chính hãng VN/A",
+    brand: "Apple",
+    price: 23990000,
+    originalPrice: 27990000,
+    image: "https://images.unsplash.com/photo-1663499482523-1c0d8c7a03c7?w=500&q=80",
+    rating: 4.8,
+    reviews: 3210,
+    specs: {
+      screen: "6.1\" Super Retina XDR",
+      cpu: "Apple A16 Bionic",
+      ram: "6GB",
+      storage: "256GB",
+      battery: "3200mAh",
+      camera: "48MP + 12MP + 12MP"
+    },
+    colors: ["Tím", "Vàng", "Bạc", "Đen"],
+    inStock: true,
+    discount: 14
+  },
+  {
+    id: "sample-10",
+    name: "Samsung Galaxy Z Fold5 12GB 256GB",
+    brand: "Samsung",
+    price: 35990000,
+    originalPrice: 40990000,
+    image: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=500&q=80",
+    rating: 4.7,
+    reviews: 876,
+    specs: {
+      screen: "7.6\" Dynamic AMOLED 2X",
+      cpu: "Snapdragon 8 Gen 2",
+      ram: "12GB",
+      storage: "256GB",
+      battery: "4400mAh",
+      camera: "50MP + 12MP + 10MP"
+    },
+    colors: ["Kem", "Đen", "Xanh"],
+    inStock: true,
+    isHot: true,
+    discount: 12
+  },
+  {
+    id: "sample-11",
+    name: "Xiaomi Redmi Note 13 Pro 8GB 256GB",
+    brand: "Xiaomi",
+    price: 7990000,
+    originalPrice: 9990000,
+    image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&q=80",
+    rating: 4.5,
+    reviews: 2134,
+    specs: {
+      screen: "6.67\" AMOLED",
+      cpu: "Snapdragon 7s Gen 2",
+      ram: "8GB",
+      storage: "256GB",
+      battery: "5100mAh",
+      camera: "200MP + 8MP + 2MP"
+    },
+    colors: ["Đen", "Xanh", "Tím"],
+    inStock: true,
+    discount: 20
+  },
+  {
+    id: "sample-12",
+    name: "OPPO Reno11 5G 8GB 256GB",
+    brand: "OPPO",
+    price: 9990000,
+    originalPrice: 11990000,
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80",
+    rating: 4.4,
+    reviews: 1543,
+    specs: {
+      screen: "6.7\" AMOLED",
+      cpu: "MediaTek Dimensity 7050",
+      ram: "8GB",
+      storage: "256GB",
+      battery: "5000mAh",
+      camera: "50MP + 32MP + 8MP"
+    },
+    colors: ["Xanh Lá", "Xám", "Hồng"],
+    inStock: true,
+    discount: 17
+  }
+];
+
+function createSampleData() {
+  console.log('🎨 Creating sample product data...');
+
+  // Create data directory if not exists
+  if (!fs.existsSync('data')) {
+    fs.mkdirSync('data');
+  }
+
+  // Save sample products
+  const outputPath = 'data/shopee-products.json';
+  fs.writeFileSync(outputPath, JSON.stringify(sampleProducts, null, 2), 'utf-8');
+  
+  console.log(`✅ Created ${sampleProducts.length} sample products`);
+  console.log(`💾 Saved to ${outputPath}`);
+
+  // Print summary
+  console.log('\n📊 Summary:');
+  console.log(`Total products: ${sampleProducts.length}`);
+  
+  const prices = sampleProducts.map(p => p.price);
+  console.log(`Price range: ${Math.min(...prices).toLocaleString('vi-VN')}₫ - ${Math.max(...prices).toLocaleString('vi-VN')}₫`);
+  
+  const brands = [...new Set(sampleProducts.map(p => p.brand))];
+  console.log(`Brands: ${brands.join(', ')}`);
+  
+  const avgDiscount = (sampleProducts.reduce((sum, p) => sum + (p.discount || 0), 0) / sampleProducts.length).toFixed(1);
+  console.log(`Average discount: ${avgDiscount}%`);
+
+  console.log('\n💡 Next steps:');
+  console.log('1. Review the data: cat data/shopee-products.json');
+  console.log('2. Merge with existing: node scripts/merge-products.js');
+  console.log('3. Or replace current: cp data/shopee-products.json data/products.json');
+}
+
+if (require.main === module) {
+  createSampleData();
+}
+
+module.exports = { createSampleData, sampleProducts };
