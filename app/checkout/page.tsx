@@ -25,10 +25,7 @@ export default function CheckoutPage() {
   });
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND',
-    }).format(price);
+    return new Intl.NumberFormat('vi-VN').format(price);
   };
 
   const handleInputChange = (
@@ -53,6 +50,7 @@ export default function CheckoutPage() {
         email: formData.email,
         address: `${formData.address}, ${formData.ward}, ${formData.district}, ${formData.city}`,
         note: formData.note,
+        paymentMethod: paymentMethod === 'cod' ? 'Thanh toán khi nhận hàng' : 'Chuyển khoản ngân hàng',
         items: cart.map(item => ({
           name: item.name,
           color: item.selectedColor,
@@ -64,26 +62,34 @@ export default function CheckoutPage() {
       };
 
       // Send to Google Sheets via Apps Script Web App
-      // Replace this URL with your Google Apps Script Web App URL
+      // HƯỚNG DẪN: Thay URL này bằng URL Google Apps Script của bạn
+      // Xem file HUONG_DAN_GOOGLE_SHEETS.md để biết cách lấy URL
       const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
       
-      // For demo purposes, we'll just log the data
-      console.log('Order Data:', orderData);
-      
-      // Uncomment this when you have your Google Apps Script URL
-      /*
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderData),
-      });
-      */
+      // Kiểm tra xem đã cấu hình URL chưa
+      if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        console.warn('⚠️ Chưa cấu hình Google Sheets URL. Xem file HUONG_DAN_GOOGLE_SHEETS.md');
+        console.log('📦 Order Data:', orderData);
+      } else {
+        // Gửi dữ liệu đến Google Sheets
+        try {
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData),
+          });
+          console.log('✅ Đơn hàng đã được gửi đến Google Sheets');
+        } catch (fetchError) {
+          console.error('❌ Lỗi khi gửi đến Google Sheets:', fetchError);
+          // Vẫn tiếp tục xử lý đơn hàng dù có lỗi
+        }
+      }
 
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Simulate processing time
+      await new Promise(resolve => setTimeout(resolve, 1500));
 
       // Clear cart and redirect to success page
       clearCart();
@@ -102,27 +108,27 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f5f5f5] py-8">
+    <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-[1200px] mx-auto px-4">
         {/* Progress Steps */}
-        <div className="mb-8">
+        <div className="mb-8 bg-white rounded-lg p-6 shadow-sm">
           <div className="flex items-center justify-center gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white">
+              <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white shadow-md">
                 <CheckCircle className="w-5 h-5" />
               </div>
-              <span className="text-sm font-medium text-gray-700">Giỏ hàng</span>
+              <span className="text-sm font-semibold text-gray-700">Giỏ hàng</span>
             </div>
-            <div className="w-16 h-0.5 bg-[#d70018]" />
+            <div className="w-20 h-1 bg-[#d70018] rounded" />
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-[#d70018] flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 rounded-full bg-[#d70018] flex items-center justify-center text-white font-bold shadow-md">
                 2
               </div>
               <span className="text-sm font-bold text-[#d70018]">Thanh toán</span>
             </div>
-            <div className="w-16 h-0.5 bg-gray-300" />
+            <div className="w-20 h-1 bg-gray-300 rounded" />
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">
+              <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">
                 3
               </div>
               <span className="text-sm font-medium text-gray-500">Hoàn tất</span>

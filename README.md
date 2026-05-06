@@ -264,3 +264,6 @@ MIT License - Tự do sử dụng cho mục đích cá nhân và thương mại.
 
 **Made with ❤️ by Kiro AI**  
 **Date: May 6, 2026**
+
+
+quản lý :https://docs.google.com/spreadsheets/d/1fhfnpIFHbBiZAOKcdUEJOc9p06_i1QyQmvVjCTtC3UI/edit?usp=sharing
