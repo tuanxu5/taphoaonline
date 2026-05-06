@@ -8,7 +8,8 @@ import Footer from "@/components/Footer";
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-plus-jakarta",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -16,6 +17,13 @@ export const metadata: Metadata = {
   description: "Mua sắm thông minh với hàng ngàn sản phẩm: Điện thoại, Laptop, Mỹ phẩm, Giày dép, Quần áo, Phụ kiện. Giá tốt, giao hàng nhanh, bảo hành chính hãng.",
   keywords: "mua sắm online, điện thoại, laptop, mỹ phẩm, giày dép, quần áo, phụ kiện, siêu thị trực tuyến",
   authors: [{ name: "MegaMart" }],
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: "MegaMart - Siêu thị trực tuyến đa dạng sản phẩm",
     description: "Mua sắm thông minh với hàng ngàn sản phẩm chính hãng, giá tốt nhất",
@@ -33,9 +41,6 @@ export default function RootLayout({
       lang="vi"
       className={`${plusJakarta.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
       <body className={`${plusJakarta.className} min-h-full flex flex-col`}>
         <CartProvider>
           <Header />

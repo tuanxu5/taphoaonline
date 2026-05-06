@@ -87,18 +87,18 @@ export default function Header() {
       {/* Nav */}
       <div className="hidden lg:block bg-white border-b border-gray-100">
         <div className="max-w-[1200px] mx-auto px-4">
-          <div className="flex items-center gap-6 h-11 text-[13px]">
-            <Link href="/" className="text-gray-700 hover:text-[#d70018] font-medium">
+          <div className="flex items-center gap-8 h-12 text-[13px]">
+            <Link href="/" className="text-gray-700 hover:text-[#d70018] font-semibold">
               Trang chủ
             </Link>
-            <Link href="/?flashsale=true" className="text-[#d70018] font-medium">
+            <Link href="/?flashsale=true" className="text-[#d70018] font-semibold">
               Flash Sale
             </Link>
             {categories.filter(c => c.id !== 'all').map((category) => (
               <Link 
                 key={category.id}
                 href={`/?category=${category.id}`} 
-                className="text-gray-700 hover:text-[#d70018]"
+                className="text-gray-700 hover:text-[#d70018] font-semibold"
               >
                 {category.name}
               </Link>
@@ -109,7 +109,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="lg:hidden border-t border-gray-200 bg-white">
+        <div className="lg:hidden border-t border-gray-200 bg-white font-semibold">
           <div className="max-w-[1200px] mx-auto px-4 py-3 space-y-1">
             <Link 
               href="/" 
