@@ -1,0 +1,37 @@
+[
+  {
+    "id": "all",
+    "name": "Tất cả",
+    "icon": "Smartphone"
+  },
+  {
+    "id": "apple",
+    "name": "Apple",
+    "icon": "Apple"
+  },
+  {
+    "id": "samsung",
+    "name": "Samsung",
+    "icon": "Smartphone"
+  },
+  {
+    "id": "xiaomi",
+    "name": "Xiaomi",
+    "icon": "Smartphone"
+  },
+  {
+    "id": "oppo",
+    "name": "OPPO",
+    "icon": "Smartphone"
+  },
+  {
+    "id": "vivo",
+    "name": "Vivo",
+    "icon": "Smartphone"
+  },
+  {
+    "id": "google",
+    "name": "Google",
+    "icon": "Smartphone"
+  }
+]

@@ -1,65 +1,139 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import ProductCard from '@/components/ProductCard';
+import Banner from '@/components/Banner';
+import CategoryFilter from '@/components/CategoryFilter';
+import Features from '@/components/Features';
+import HotDeals from '@/components/HotDeals';
+import FilterBar from '@/components/FilterBar';
+import { products, categories } from '@/lib/products';
+import { LayoutGrid, List } from 'lucide-react';
 
 export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [priceRange, setPriceRange] = useState('all');
+  const [sortBy, setSortBy] = useState('default');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+
+  let filteredProducts = selectedCategory === 'all'
+    ? products
+    : products.filter(p => p.brand.toLowerCase() === selectedCategory.toLowerCase());
+
+  // Filter by price
+  if (priceRange !== 'all') {
+    filteredProducts = filteredProducts.filter(p => {
+      if (priceRange === 'under10') return p.price < 10000000;
+      if (priceRange === '10to20') return p.price >= 10000000 && p.price < 20000000;
+      if (priceRange === '20to30') return p.price >= 20000000 && p.price < 30000000;
+      if (priceRange === 'over30') return p.price >= 30000000;
+      return true;
+    });
+  }
+
+  // Sort products
+  if (sortBy === 'price-asc') {
+    filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
+  } else if (sortBy === 'price-desc') {
+    filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
+  } else if (sortBy === 'name') {
+    filteredProducts = [...filteredProducts].sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sortBy === 'rating') {
+    filteredProducts = [...filteredProducts].sort((a, b) => b.rating - a.rating);
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="min-h-screen bg-gray-50">
+      <Banner />
+      <HotDeals />
+
+      <div className="max-w-[1200px] mx-auto px-4 py-6 space-y-5">
+        {/* Category Filter */}
+        <CategoryFilter
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+        {/* Filter Bar */}
+        <div className="flex items-center justify-between gap-4">
+          <FilterBar
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+          />
+          
+          {/* View Mode Toggle - Desktop only */}
+          <div className="hidden lg:flex items-center gap-2 bg-white rounded-lg p-1 border border-gray-200">
+            <button
+              onClick={() => setViewMode('grid')}
+              className={`p-2 rounded transition-colors ${
+                viewMode === 'grid'
+                  ? 'bg-[#d70018] text-white'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <LayoutGrid className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => setViewMode('list')}
+              className={`p-2 rounded transition-colors ${
+                viewMode === 'list'
+                  ? 'bg-[#d70018] text-white'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <List className="w-5 h-5" />
+            </button>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Products Section */}
+        <div>
+          {/* Header */}
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">
+                {selectedCategory === 'all' 
+                  ? 'Tất cả sản phẩm' 
+                  : `Điện thoại ${categories.find(c => c.id === selectedCategory)?.name}`}
+              </h2>
+              <p className="text-sm text-gray-600 mt-1">
+                {filteredProducts.length} sản phẩm
+              </p>
+            </div>
+          </div>
+
+          {/* Products Grid */}
+          <div className={`
+            ${viewMode === 'grid' 
+              ? 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4' 
+              : 'flex flex-col gap-4'}
+          `}>
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+
+          {/* Empty State */}
+          {filteredProducts.length === 0 && (
+            <div className="text-center py-20 bg-white rounded-xl">
+              <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <LayoutGrid className="w-12 h-12 text-gray-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Không tìm thấy sản phẩm
+              </h3>
+              <p className="text-gray-600">
+                Thử thay đổi bộ lọc hoặc tìm kiếm khác
+              </p>
+            </div>
+          )}
         </div>
-      </main>
+      </div>
+
+      <Features />
     </div>
   );
 }

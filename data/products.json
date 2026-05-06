@@ -1,0 +1,174 @@
+[
+  {
+    "id": "1",
+    "name": "iPhone 15 Pro Max",
+    "brand": "Apple",
+    "price": 29990000,
+    "originalPrice": 34990000,
+    "image": "https://images.unsplash.com/photo-1696446702183-cbd50c6e8e0b?w=500&q=80",
+    "rating": 4.9,
+    "reviews": 1234,
+    "specs": {
+      "screen": "6.7\" Super Retina XDR",
+      "cpu": "Apple A17 Pro",
+      "ram": "8GB",
+      "storage": "256GB",
+      "battery": "4422mAh",
+      "camera": "48MP + 12MP + 12MP"
+    },
+    "colors": ["Titan Tự Nhiên", "Titan Xanh", "Titan Trắng", "Titan Đen"],
+    "inStock": true,
+    "isHot": true,
+    "discount": 14
+  },
+  {
+    "id": "2",
+    "name": "Samsung Galaxy S24 Ultra",
+    "brand": "Samsung",
+    "price": 26990000,
+    "originalPrice": 31990000,
+    "image": "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 987,
+    "specs": {
+      "screen": "6.8\" Dynamic AMOLED 2X",
+      "cpu": "Snapdragon 8 Gen 3",
+      "ram": "12GB",
+      "storage": "256GB",
+      "battery": "5000mAh",
+      "camera": "200MP + 50MP + 12MP + 10MP"
+    },
+    "colors": ["Titan Xám", "Titan Đen", "Titan Tím", "Titan Vàng"],
+    "inStock": true,
+    "isHot": true,
+    "discount": 16
+  },
+  {
+    "id": "3",
+    "name": "Xiaomi 14 Ultra",
+    "brand": "Xiaomi",
+    "price": 24990000,
+    "originalPrice": 29990000,
+    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 654,
+    "specs": {
+      "screen": "6.73\" AMOLED",
+      "cpu": "Snapdragon 8 Gen 3",
+      "ram": "16GB",
+      "storage": "512GB",
+      "battery": "5000mAh",
+      "camera": "50MP + 50MP + 50MP + 50MP"
+    },
+    "colors": ["Đen", "Trắng", "Xanh"],
+    "inStock": true,
+    "isHot": true,
+    "discount": 17
+  },
+  {
+    "id": "4",
+    "name": "OPPO Find X7 Ultra",
+    "brand": "OPPO",
+    "price": 22990000,
+    "originalPrice": 26990000,
+    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 432,
+    "specs": {
+      "screen": "6.82\" AMOLED",
+      "cpu": "Snapdragon 8 Gen 3",
+      "ram": "16GB",
+      "storage": "512GB",
+      "battery": "5000mAh",
+      "camera": "50MP + 50MP + 50MP + 50MP"
+    },
+    "colors": ["Đen", "Nâu", "Xanh Dương"],
+    "inStock": true,
+    "discount": 15
+  },
+  {
+    "id": "5",
+    "name": "iPhone 14 Pro",
+    "brand": "Apple",
+    "price": 23990000,
+    "originalPrice": 27990000,
+    "image": "https://images.unsplash.com/photo-1663499482523-1c0d8c7a03c7?w=500&q=80",
+    "rating": 4.8,
+    "reviews": 2341,
+    "specs": {
+      "screen": "6.1\" Super Retina XDR",
+      "cpu": "Apple A16 Bionic",
+      "ram": "6GB",
+      "storage": "256GB",
+      "battery": "3200mAh",
+      "camera": "48MP + 12MP + 12MP"
+    },
+    "colors": ["Tím", "Vàng", "Bạc", "Đen"],
+    "inStock": true,
+    "discount": 14
+  },
+  {
+    "id": "6",
+    "name": "Samsung Galaxy Z Fold5",
+    "brand": "Samsung",
+    "price": 35990000,
+    "originalPrice": 40990000,
+    "image": "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 543,
+    "specs": {
+      "screen": "7.6\" Dynamic AMOLED 2X",
+      "cpu": "Snapdragon 8 Gen 2",
+      "ram": "12GB",
+      "storage": "256GB",
+      "battery": "4400mAh",
+      "camera": "50MP + 12MP + 10MP"
+    },
+    "colors": ["Kem", "Đen", "Xanh"],
+    "inStock": true,
+    "isHot": true,
+    "discount": 12
+  },
+  {
+    "id": "7",
+    "name": "Vivo X100 Pro",
+    "brand": "Vivo",
+    "price": 21990000,
+    "originalPrice": 25990000,
+    "image": "https://images.unsplash.com/photo-1592286927505-b0c2fc1d6a1e?w=500&q=80",
+    "rating": 4.6,
+    "reviews": 321,
+    "specs": {
+      "screen": "6.78\" AMOLED",
+      "cpu": "MediaTek Dimensity 9300",
+      "ram": "16GB",
+      "storage": "512GB",
+      "battery": "5400mAh",
+      "camera": "50MP + 50MP + 50MP"
+    },
+    "colors": ["Xanh", "Cam", "Đen"],
+    "inStock": true,
+    "discount": 15
+  },
+  {
+    "id": "8",
+    "name": "Google Pixel 8 Pro",
+    "brand": "Google",
+    "price": 24990000,
+    "originalPrice": 27990000,
+    "image": "https://images.unsplash.com/photo-1598618443855-232ee0f819f2?w=500&q=80",
+    "rating": 4.7,
+    "reviews": 765,
+    "specs": {
+      "screen": "6.7\" LTPO OLED",
+      "cpu": "Google Tensor G3",
+      "ram": "12GB",
+      "storage": "256GB",
+      "battery": "5050mAh",
+      "camera": "50MP + 48MP + 48MP"
+    },
+    "colors": ["Obsidian", "Porcelain", "Bay"],
+    "inStock": true,
+    "discount": 11
+  }
+]
