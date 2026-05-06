@@ -12,6 +12,7 @@ export default function CheckoutPage() {
   const { cart, getTotalPrice, clearCart } = useCart();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isOrderCompleted, setIsOrderCompleted] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<'cod' | 'bank'>('cod');
   const [formData, setFormData] = useState({
     customerName: '',
@@ -19,7 +20,6 @@ export default function CheckoutPage() {
     email: '',
     address: '',
     city: '',
-    district: '',
     ward: '',
     note: '',
   });
@@ -48,9 +48,9 @@ export default function CheckoutPage() {
         customerName: formData.customerName,
         phone: formData.phone,
         email: formData.email,
-        address: `${formData.address}, ${formData.ward}, ${formData.district}, ${formData.city}`,
+        address: `${formData.address}, ${formData.ward}, ${formData.city}`,
         note: formData.note,
-        paymentMethod: paymentMethod === 'cod' ? 'Thanh toán khi nhận hàng' : 'Chuyển khoản ngân hàng',
+        paymentMethod: 'Thanh toán khi nhận hàng (COD)',
         items: cart.map(item => ({
           name: item.name,
           color: item.selectedColor,
@@ -62,35 +62,34 @@ export default function CheckoutPage() {
       };
 
       // Send to Google Sheets via Apps Script Web App
-      // HƯỚNG DẪN: Thay URL này bằng URL Google Apps Script của bạn
-      // Xem file HUONG_DAN_GOOGLE_SHEETS.md để biết cách lấy URL
-      const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxCmiUlATsWi_rPIxDvd61iAa6J0TkWXXB1M-ntMz11wOZRIG--xCzPux51x71b2wBdnA/exec';
       
       // Kiểm tra xem đã cấu hình URL chưa
-      if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-        console.warn('⚠️ Chưa cấu hình Google Sheets URL. Xem file HUONG_DAN_GOOGLE_SHEETS.md');
-        console.log('📦 Order Data:', orderData);
-      } else {
-        // Gửi dữ liệu đến Google Sheets
-        try {
-          await fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(orderData),
-          });
-          console.log('✅ Đơn hàng đã được gửi đến Google Sheets');
-        } catch (fetchError) {
-          console.error('❌ Lỗi khi gửi đến Google Sheets:', fetchError);
-          // Vẫn tiếp tục xử lý đơn hàng dù có lỗi
-        }
+      console.log('🚀 Đang gửi đơn hàng đến Google Sheets...');
+      console.log('📦 Order Data:', orderData);
+      
+      // Gửi dữ liệu đến Google Sheets
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(orderData),
+        });
+        console.log('✅ Đơn hàng đã được gửi đến Google Sheets');
+      } catch (fetchError) {
+        console.error('❌ Lỗi khi gửi đến Google Sheets:', fetchError);
+        // Vẫn tiếp tục xử lý đơn hàng dù có lỗi
       }
 
       // Simulate processing time
       await new Promise(resolve => setTimeout(resolve, 1500));
 
+      // Set order completed before clearing cart
+      setIsOrderCompleted(true);
+      
       // Clear cart and redirect to success page
       clearCart();
       router.push('/order-success');
@@ -102,7 +101,7 @@ export default function CheckoutPage() {
     }
   };
 
-  if (cart.length === 0) {
+  if (cart.length === 0 && !isOrderCompleted) {
     router.push('/cart');
     return null;
   }
@@ -178,7 +177,7 @@ export default function CheckoutPage() {
                         required
                         pattern="[0-9]{10}"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d70018] focus:border-[#d70018] outline-none"
-                        placeholder="0912345678"
+                        placeholder="Nhập số điện thoại, ví dụ: 0912345678"
                       />
                     </div>
 
@@ -192,7 +191,7 @@ export default function CheckoutPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d70018] focus:border-[#d70018] outline-none"
-                        placeholder="email@example.com"
+                        placeholder="Nhập email, ví dụ: example@gmail.com"
                       />
                     </div>
                   </div>
@@ -220,11 +219,11 @@ export default function CheckoutPage() {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d70018] focus:border-[#d70018] outline-none"
-                      placeholder="Số nhà, tên đường"
+                      placeholder="Nhập số nhà, tên đường, ví dụ: 123 Nguyễn Văn Linh"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Phường/Xã <span className="text-[#d70018]">*</span>
@@ -236,22 +235,7 @@ export default function CheckoutPage() {
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d70018] focus:border-[#d70018] outline-none"
-                        placeholder="Phường 1"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Quận/Huyện <span className="text-[#d70018]">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="district"
-                        value={formData.district}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d70018] focus:border-[#d70018] outline-none"
-                        placeholder="Quận 1"
+                        placeholder="Nhập phường/xã, ví dụ: Phường Bến Nghé"
                       />
                     </div>
 
@@ -266,7 +250,7 @@ export default function CheckoutPage() {
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d70018] focus:border-[#d70018] outline-none"
-                        placeholder="TP. Hồ Chí Minh"
+                        placeholder="Nhập tỉnh/thành phố, ví dụ: TP. Hồ Chí Minh"
                       />
                     </div>
                   </div>
@@ -283,35 +267,40 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="space-y-3">
-                  <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-[#d70018] transition-colors">
+                  <label className="flex items-start gap-3 p-4 border-2 border-[#d70018] bg-red-50 rounded-lg cursor-pointer">
                     <input
                       type="radio"
                       name="paymentMethod"
                       value="cod"
-                      checked={paymentMethod === 'cod'}
-                      onChange={(e) => setPaymentMethod(e.target.value as 'cod' | 'bank')}
+                      checked={true}
+                      readOnly
                       className="mt-1 w-4 h-4 text-[#d70018] focus:ring-[#d70018]"
                     />
                     <div className="flex-1">
-                      <div className="font-semibold text-gray-900 mb-1">Thanh toán khi nhận hàng (COD)</div>
-                      <div className="text-sm text-gray-600">Thanh toán bằng tiền mặt khi nhận hàng</div>
+                      <div className="font-semibold text-gray-900 mb-1 flex items-center gap-2">
+                        💰 Thanh toán khi nhận hàng (COD)
+                        <span className="bg-[#d70018] text-white text-xs px-2 py-0.5 rounded-full">Khuyến nghị</span>
+                      </div>
+                      <div className="text-sm text-gray-600 mb-2">Thanh toán bằng tiền mặt hoặc chuyển khoản khi nhận hàng</div>
                     </div>
                   </label>
 
-                  <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-[#d70018] transition-colors">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="bank"
-                      checked={paymentMethod === 'bank'}
-                      onChange={(e) => setPaymentMethod(e.target.value as 'cod' | 'bank')}
-                      className="mt-1 w-4 h-4 text-[#d70018] focus:ring-[#d70018]"
-                    />
-                    <div className="flex-1">
-                      <div className="font-semibold text-gray-900 mb-1">Chuyển khoản ngân hàng</div>
-                      <div className="text-sm text-gray-600">Chuyển khoản qua Internet Banking hoặc ATM</div>
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-white text-xs font-bold">i</span>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-blue-900 mb-1">Lưu ý quan trọng:</h4>
+                        <ul className="text-sm text-blue-800 space-y-1">
+                          <li>• Bạn có thể kiểm tra hàng trước khi thanh toán</li>
+                          <li>• Chấp nhận thanh toán bằng tiền mặt hoặc chuyển khoản</li>
+                          <li>• Shipper sẽ mang máy POS để quẹt thẻ (nếu cần)</li>
+                          <li>• Miễn phí vận chuyển toàn quốc</li>
+                        </ul>
+                      </div>
                     </div>
-                  </label>
+                  </div>
                 </div>
               </div>
 
@@ -330,7 +319,7 @@ export default function CheckoutPage() {
                   onChange={handleInputChange}
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d70018] focus:border-[#d70018] outline-none resize-none"
-                  placeholder="Ghi chú thêm về đơn hàng (tùy chọn)"
+                  placeholder="Ghi chú thêm về đơn hàng, ví dụ: Giao giờ hành chính, gọi trước khi giao..."
                 />
               </div>
 

@@ -10,13 +10,79 @@
 
 ```javascript
 function doGet(e) {
-  // Function để test và xem trạng thái
+  // Function để test và xem trạng thái + danh sách đơn hàng
   try {
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    const lastRow = sheet.getLastRow();
     
     // Tự động setup header nếu chưa có
     setupSheetHeaders(sheet);
+    
+    const lastRow = sheet.getLastRow();
+    const totalOrders = Math.max(0, lastRow - 1);
+    
+    // Lấy dữ liệu đơn hàng (tối đa 20 đơn gần nhất)
+    let ordersHtml = '';
+    if (totalOrders > 0) {
+      const startRow = Math.max(2, lastRow - 19); // Lấy 20 đơn gần nhất
+      const numRows = lastRow - startRow + 1;
+      const data = sheet.getRange(startRow, 1, numRows, 19).getValues();
+      
+      // Tạo table HTML
+      ordersHtml = `
+        <div class="orders-section">
+          <h3>📋 Danh sách đơn hàng gần nhất (${Math.min(20, totalOrders)} đơn)</h3>
+          <div class="table-container">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Mã đơn</th>
+                  <th>Ngày</th>
+                  <th>Khách hàng</th>
+                  <th>SĐT</th>
+                  <th>Sản phẩm</th>
+                  <th>Tổng tiền</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+      `;
+      
+      // Đảo ngược để hiển thị đơn mới nhất trước
+      data.reverse().forEach(row => {
+        const [orderNumber, orderDate, orderTime, customerName, phone, email, address, paymentMethod, totalItems, products, productDetails, totalAmountNum, totalAmount, avgPrice, note, status] = row;
+        
+        const statusClass = getStatusClass(status);
+        const shortProducts = products.length > 50 ? products.substring(0, 50) + '...' : products;
+        
+        ordersHtml += `
+          <tr>
+            <td class="order-number">${orderNumber}</td>
+            <td class="order-date">${orderDate}<br><small>${orderTime}</small></td>
+            <td class="customer-name">${customerName}</td>
+            <td class="phone">${phone}</td>
+            <td class="products" title="${products}">${shortProducts}</td>
+            <td class="total-amount">${totalAmount}</td>
+            <td class="status ${statusClass}">${status}</td>
+          </tr>
+        `;
+      });
+      
+      ordersHtml += `
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    } else {
+      ordersHtml = `
+        <div class="no-orders">
+          <h3>📋 Danh sách đơn hàng</h3>
+          <p style="text-align: center; color: #666; padding: 20px;">
+            Chưa có đơn hàng nào. Hãy test bằng cách chạy function <code>testDoPost()</code>
+          </p>
+        </div>
+      `;
+    }
     
     const html = `
     <!DOCTYPE html>
@@ -26,68 +92,121 @@ function doGet(e) {
       <title>MegaMart Order System</title>
       <style>
         body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .header { color: #d70018; text-align: center; margin-bottom: 20px; }
         .status { background: #e8f5e8; padding: 15px; border-radius: 5px; margin: 10px 0; }
         .info { background: #f0f8ff; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        .orders-section { margin: 20px 0; }
+        .no-orders { background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        
+        /* Table Styles */
+        .table-container { overflow-x: auto; margin: 10px 0; }
+        .orders-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .orders-table th { background: #d70018; color: white; padding: 12px 8px; text-align: left; font-weight: bold; }
+        .orders-table td { padding: 10px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+        .orders-table tr:nth-child(even) { background: #f8f9fa; }
+        .orders-table tr:hover { background: #e3f2fd; }
+        
+        /* Column Styles */
+        .order-number { font-weight: bold; color: #d70018; min-width: 120px; }
+        .order-date { min-width: 100px; font-size: 12px; }
+        .customer-name { font-weight: bold; min-width: 150px; }
+        .phone { min-width: 110px; font-family: monospace; }
+        .products { max-width: 200px; font-size: 12px; line-height: 1.3; }
+        .total-amount { font-weight: bold; color: #d70018; text-align: right; min-width: 100px; }
+        
+        /* Status Styles */
+        .status { font-weight: bold; text-align: center; padding: 4px 8px; border-radius: 4px; min-width: 80px; }
+        .status-new { background: #fff3cd; color: #856404; }
+        .status-processing { background: #cce5ff; color: #004085; }
+        .status-completed { background: #d4edda; color: #155724; }
+        .status-cancelled { background: #f8d7da; color: #721c24; }
+        
         .test-btn { background: #d70018; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
         .test-btn:hover { background: #b8001a; }
-        pre { background: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto; font-size: 12px; }
+        
+        .stats { display: flex; gap: 20px; margin: 20px 0; }
+        .stat-box { flex: 1; background: linear-gradient(135deg, #d70018, #ff4757); color: white; padding: 15px; border-radius: 8px; text-align: center; }
+        .stat-number { font-size: 24px; font-weight: bold; }
+        .stat-label { font-size: 12px; opacity: 0.9; }
+        
+        @media (max-width: 768px) {
+          .container { margin: 10px; padding: 15px; }
+          .orders-table { font-size: 12px; }
+          .orders-table th, .orders-table td { padding: 6px 4px; }
+          .stats { flex-direction: column; }
+        }
       </style>
     </head>
     <body>
       <div class="container">
         <div class="header">
-          <h1>🛒 MegaMart Order System</h1>
-          <p>Google Apps Script Web App</p>
+          <h1>🛒 MegaMart Order Management System</h1>
+          <p>Google Apps Script Web App Dashboard</p>
         </div>
+        
+        <div class="stats">
+          <div class="stat-box">
+            <div class="stat-number">${totalOrders}</div>
+            <div class="stat-label">Tổng đơn hàng</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">${sheet.getName()}</div>
+            <div class="stat-label">Sheet đang dùng</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">${new Date().toLocaleDateString('vi-VN')}</div>
+            <div class="stat-label">Cập nhật lần cuối</div>
+          </div>
+        </div>
+        
+        ${ordersHtml}
         
         <div class="status">
           <h3>✅ Trạng thái hệ thống</h3>
-          <p><strong>Sheet:</strong> ${sheet.getName()}</p>
-          <p><strong>Tổng đơn hàng:</strong> ${Math.max(0, lastRow - 1)} đơn</p>
-          <p><strong>Cập nhật lần cuối:</strong> ${new Date().toLocaleString('vi-VN')}</p>
+          <p><strong>Spreadsheet ID:</strong> ${SpreadsheetApp.getActiveSpreadsheet().getId()}</p>
+          <p><strong>Sheet Name:</strong> ${sheet.getName()}</p>
+          <p><strong>Last Update:</strong> ${new Date().toLocaleString('vi-VN')}</p>
         </div>
         
         <div class="info">
           <h3>📋 Thông tin kết nối</h3>
-          <p><strong>URL để gửi đơn hàng:</strong></p>
+          <p><strong>POST URL:</strong></p>
           <pre>${ScriptApp.getService().getUrl()}</pre>
-          <p><strong>Method:</strong> POST</p>
-          <p><strong>Content-Type:</strong> application/json</p>
+          <p><strong>Method:</strong> POST | <strong>Content-Type:</strong> application/json</p>
         </div>
         
         <div class="info">
           <h3>🧪 Test Functions</h3>
-          <p>Để test hệ thống, vào Apps Script Editor và chạy:</p>
+          <p>Vào Apps Script Editor và chạy các function sau:</p>
           <ul>
-            <li><code>testDoPost()</code> - Tạo đơn hàng mẫu</li>
-            <li><code>resetSheet()</code> - Reset lại sheet</li>
-            <li><code>addValidationRules()</code> - Thêm validation</li>
+            <li><code>testDoPost()</code> - Tạo đơn hàng mẫu để test</li>
+            <li><code>resetSheet()</code> - Reset lại sheet và tạo header mới</li>
+            <li><code>addValidationRules()</code> - Thêm validation cho các cột</li>
           </ul>
         </div>
         
         <div class="info">
-          <h3>📊 Cấu trúc dữ liệu</h3>
-          <p>Dữ liệu gửi lên phải có format JSON:</p>
+          <h3>📊 Sample JSON Data</h3>
           <pre>{
-  "timestamp": "2026-05-06T...",
+  "timestamp": "2026-05-06T14:30:25.000Z",
   "customerName": "Nguyễn Văn A",
   "phone": "0912345678",
   "email": "test@example.com",
-  "address": "123 ABC, Quận 1, TP.HCM",
-  "paymentMethod": "COD",
-  "note": "Ghi chú",
+  "address": "123 ABC, Phường 1, Quận 1, TP.HCM",
+  "paymentMethod": "Thanh toán khi nhận hàng",
+  "note": "Giao giờ hành chính",
   "items": [
     {
-      "name": "iPhone 15",
-      "color": "Đen",
+      "name": "iPhone 15 Pro Max 256GB",
+      "color": "Titan Tự Nhiên",
       "quantity": 1,
-      "price": 25000000,
-      "total": 25000000
+      "price": 29990000,
+      "total": 29990000
     }
   ],
-  "totalAmount": 25000000
+  "totalAmount": 29990000
 }</pre>
         </div>
       </div>
@@ -98,10 +217,31 @@ function doGet(e) {
     
   } catch (error) {
     return HtmlService.createHtmlOutput(`
-      <h1 style="color: red;">❌ Lỗi hệ thống</h1>
-      <p>${error.toString()}</p>
-      <p>Vui lòng kiểm tra lại cấu hình Apps Script.</p>
+      <div style="max-width: 600px; margin: 50px auto; padding: 20px; font-family: Arial, sans-serif;">
+        <h1 style="color: #d70018;">❌ Lỗi hệ thống</h1>
+        <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <strong>Chi tiết lỗi:</strong><br>
+          ${error.toString()}
+        </div>
+        <p>Vui lòng kiểm tra lại:</p>
+        <ul>
+          <li>Quyền truy cập Google Sheets</li>
+          <li>Cấu hình Apps Script</li>
+          <li>Deploy settings</li>
+        </ul>
+      </div>
     `);
+  }
+}
+
+function getStatusClass(status) {
+  switch(status) {
+    case 'Mới': return 'status-new';
+    case 'Đang xử lý': return 'status-processing';
+    case 'Đã giao':
+    case 'Hoàn thành': return 'status-completed';
+    case 'Hủy': return 'status-cancelled';
+    default: return 'status-new';
   }
 }
 
